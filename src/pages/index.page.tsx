@@ -1,6 +1,7 @@
 import { Header } from '@/components/Header'
 import { cn } from '@/utils/cn'
 import Head from 'next/head'
+import { HeroBanner } from './components/home/HeroBanner'
 
 // export const getServerSideProps: GetServerSideProps = async () => {
 //   const response = await api.get('/3/movie/popular', {
@@ -19,8 +20,10 @@ export default function Home(props: any) {
         <title>HOME | MUVIS</title>
       </Head>
 
-      <div className={cn('w-screen h-screen bg-zinc-900 text-white')}>
+      <div className={cn('w-full h-screen bg-zinc-900 text-white')}>
         <Header />
+
+        <HeroBanner />
       </div>
     </>
   )
