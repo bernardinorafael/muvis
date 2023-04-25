@@ -24,11 +24,17 @@ export function LoginDialogContent({ children, ...props }: SearchMoviesProps) {
 
         <DialogComponent.Content
           className={cn(
-            'absolute top-0 flex flex-col gap-8 z-50 h-screen w-screen bg-zinc-900 py-14',
+            'absolute top-0 overflow-auto flex flex-col gap-8 z-50 h-screen w-screen bg-zinc-900 py-14',
             'data-[state=open]:animate-searchMoviesShown',
           )}
         >
           <CloseDialogButton />
+
+          <DialogComponent.Title
+            className={cn('text-center text-zinc-300 font-semibold text-4xl')}
+          >
+            Faça login ou crie sua conta
+          </DialogComponent.Title>
 
           <TabsComponent.Root
             className={cn('w-full max-w-xl mx-auto shadow-lg')}
@@ -36,7 +42,7 @@ export function LoginDialogContent({ children, ...props }: SearchMoviesProps) {
           >
             <TabsComponent.List
               className={cn(
-                'mb-4 p-1 bg-zinc-800 rounded-lg grid grid-cols-2 gap-5 shadow-xl',
+                'mb-4 p-2 bg-zinc-800 rounded-lg grid grid-cols-2 gap-5 shadow-xl',
               )}
             >
               <TabsComponent.Trigger

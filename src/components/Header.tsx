@@ -7,7 +7,11 @@ export function Header() {
   const BUTTONS_NAV = ['Home', 'Categorias', 'Minha lista']
 
   return (
-    <header className={cn('w-full h-16 flex items-center shadow-2xl')}>
+    <header
+      className={cn(
+        'w-full h-16 flex items-center shadow-2xl border-b border-zinc-800',
+      )}
+    >
       <div
         className={cn(
           'flex items-center justify-between w-full max-w-[1100px] mx-auto px-4 h-full',

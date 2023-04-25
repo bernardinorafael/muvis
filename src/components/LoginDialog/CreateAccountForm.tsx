@@ -1,73 +1,34 @@
 import { cn } from '@/utils/cn'
+import { Input } from './Input'
 
 export function CreateAccountForm() {
   return (
     <form
       className={cn(
-        'w-full flex flex-col gap-4 p-4 border border-zinc-800 rounded-lg',
+        'w-full flex flex-col gap-4 p-6 border border-zinc-800 rounded-lg',
       )}
     >
-      <label className={cn('flex flex-col gap-3 text-zinc-300')}>
-        Nome completo*
-        <input
-          className={cn(
-            'h-12 rounded-md bg-zinc-800 placeholder:text-zinc-500 px-4 text-lg',
-            'focus:outline outline-offset-2 outline-2 focus:outline-zinc-800',
-          )}
-          type="text"
-          autoFocus
-        />
-      </label>
-
-      <label className={cn('flex flex-col gap-3 text-zinc-300')}>
-        E-mail*
-        <input
-          className={cn(
-            'h-12 rounded-md bg-zinc-800 placeholder:text-zinc-500 px-4 text-lg',
-            'focus:outline outline-offset-2 outline-2 focus:outline-zinc-800',
-          )}
-          type="text"
-        />
-      </label>
-
-      <label className={cn('flex flex-col gap-3 text-zinc-300')}>
-        Fone*
-        <input
-          className={cn(
-            'h-12 rounded-md bg-zinc-800 placeholder:text-zinc-500 px-4 text-lg',
-            'focus:outline outline-offset-2 outline-2 focus:outline-zinc-800',
-          )}
-          type="text"
-        />
-      </label>
+      <Input autoFocus label="Nome completo*" type="text" />
+      <Input label="E-mail*" type="text" />
+      <Input label="Telefone*" type="text" />
 
       <div className={cn('grid grid-cols-2 gap-6')}>
-        <label className={cn('flex flex-col gap-3 text-zinc-300')}>
-          Confirme sua senha*
-          <input
-            className={cn(
-              'h-12 rounded-md bg-zinc-800 placeholder:text-zinc-500 px-4 text-lg',
-              'focus:outline outline-offset-2 outline-2 focus:outline-zinc-800',
-            )}
-            type="password"
-          />
-        </label>
-
-        <label className={cn('flex flex-col gap-3 text-zinc-300')}>
-          Senha*
-          <input
-            className={cn(
-              'h-12 rounded-md bg-zinc-800 placeholder:text-zinc-500 px-4 text-lg',
-              'focus:outline outline-offset-2 outline-2 focus:outline-zinc-800',
-            )}
-            type="password"
-          />
-        </label>
+        <Input label="Senha*" type="password" />
+        <Input label="Confirme sua senha*" type="password" />
       </div>
 
+      <span
+        className={cn(
+          'underline cursor-pointer text-sm text-zinc-400',
+          'hover:text-zinc-300 transition-colors',
+        )}
+      >
+        Ajuda com a senha?
+      </span>
+
       <span className={cn('text-xs leading-tight text-zinc-400 mt-4')}>
-        Nós levamos a privacidade e a segurança de seus dados muito a sério. Ao criar
-        uma conta, você concorda com nossos{' '}
+        Ao clicar em criar conta com o processo de criação de conta, você está
+        concordando com nossos{' '}
         <span
           className={cn(
             'underline cursor-pointer',
@@ -76,7 +37,7 @@ export function CreateAccountForm() {
         >
           Termos de Uso
         </span>
-        , que explicam como utilizamos suas informações.
+        . Por favor, leia-os com atenção antes de prosseguir.
       </span>
 
       <button
