@@ -30,6 +30,17 @@ export function CreateAccountForm() {
         />
       </label>
 
+      <label className={cn('flex flex-col gap-3 text-zinc-300')}>
+        Fone*
+        <input
+          className={cn(
+            'h-12 rounded-md bg-zinc-800 placeholder:text-zinc-500 px-4 text-lg',
+            'focus:outline outline-offset-2 outline-2 focus:outline-zinc-800',
+          )}
+          type="text"
+        />
+      </label>
+
       <div className={cn('grid grid-cols-2 gap-6')}>
         <label className={cn('flex flex-col gap-3 text-zinc-300')}>
           Confirme sua senha*

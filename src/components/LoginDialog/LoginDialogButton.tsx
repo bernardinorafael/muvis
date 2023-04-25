@@ -10,7 +10,7 @@ export function LoginDialogButton(props: SearchButtonProps) {
     <button
       {...props}
       className={cn(
-        'flex items-center justify-center p-2 border border-transparent rounded-full',
+        'flex items-center justify-center gap-2 p-2 text-zinc-300 text-sm border border-transparent rounded-full',
         'hover:border-zinc-700 transition-all',
         'active:scale-[0.98]',
       )}
