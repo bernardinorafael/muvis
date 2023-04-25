@@ -8,14 +8,15 @@ module.exports = {
   theme: {
     extend: {
       keyframes: {
-        searchDialogShown: {
+        'search-dialog-shown': {
           from: { transform: 'translateY(-100%)' },
           to: { transform: 'translateY(0)' },
         },
       },
 
       animation: {
-        searchMoviesShown: 'searchDialogShown 400ms cubic-bezier(0.16, 1, 0.3, 1)',
+        'search-dialog-shown':
+          'search-dialog-shown 400ms cubic-bezier(0.16, 1, 0.3, 1)',
       },
 
       lineHeight: {

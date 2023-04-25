@@ -25,7 +25,7 @@ export function LoginDialogContent({ children, ...props }: SearchMoviesProps) {
         <DialogComponent.Content
           className={cn(
             'absolute top-0 overflow-auto flex flex-col gap-8 z-50 h-screen w-screen bg-zinc-900 py-14',
-            'data-[state=open]:animate-searchMoviesShown',
+            'data-[state=open]:animate-search-dialog-shown',
           )}
         >
           <CloseDialogButton />
