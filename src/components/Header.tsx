@@ -1,7 +1,7 @@
 import { cn } from '@/utils/cn'
 import { CaretDown } from '@phosphor-icons/react'
-import { SearchMoviesButton } from './SearchMoviesButton'
-import { SearchMoviesDialog } from './SearchMoviesDialog'
+import { LoginDialogContent } from './LoginDialog/LoginDialogContent'
+import { LoginDialogButton } from './LoginDialog/LoginDialogButton'
 
 export function Header() {
   const BUTTONS_NAV = ['Home', 'Categorias', 'Minha lista']
@@ -15,15 +15,15 @@ export function Header() {
       >
         <div className={cn('flex items-center gap-6')}>
           <nav className={cn('flex items-center gap-4')}>
-            {BUTTONS_NAV.map((label, index) => {
+            {BUTTONS_NAV.map((label, i) => {
               return (
                 <button
                   className={cn(
                     'font-semibold text-sm flex items-center justify-center gap-2 px-3 py-2 rounded-md text-zinc-400',
                     'hover:bg-zinc-800 hover:text-zinc-200 transition-all',
-                    'active:scale-95',
+                    'active:scale-[0.95]',
                   )}
-                  key={index}
+                  key={i}
                 >
                   {label}
                   <CaretDown size={18} />
@@ -33,9 +33,9 @@ export function Header() {
           </nav>
         </div>
 
-        <SearchMoviesDialog>
-          <SearchMoviesButton />
-        </SearchMoviesDialog>
+        <LoginDialogContent>
+          <LoginDialogButton />
+        </LoginDialogContent>
       </div>
     </header>
   )

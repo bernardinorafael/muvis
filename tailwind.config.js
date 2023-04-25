@@ -9,13 +9,17 @@ module.exports = {
     extend: {
       keyframes: {
         searchDialogShown: {
-          from: { transform: 'translateX(100%)' },
-          to: { transform: 'translateX(0)' },
+          from: { transform: 'translateY(-100%)' },
+          to: { transform: 'translateY(0)' },
         },
       },
 
       animation: {
-        searchMoviesShown: 'searchDialogShown 600ms cubic-bezier(0.16, 1, 0.3, 1)',
+        searchMoviesShown: 'searchDialogShown 400ms cubic-bezier(0.16, 1, 0.3, 1)',
+      },
+
+      lineHeight: {
+        'extra-none': 0,
       },
     },
   },
