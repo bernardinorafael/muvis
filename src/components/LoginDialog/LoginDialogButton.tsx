@@ -1,7 +1,6 @@
-import { cn } from '@/utils/cn'
-
-import { User } from '@phosphor-icons/react'
 import { ButtonHTMLAttributes } from 'react'
+import { cn } from '@/utils/cn'
+import { User } from '@phosphor-icons/react'
 
 type SearchButtonProps = ButtonHTMLAttributes<HTMLButtonElement>
 
@@ -10,8 +9,8 @@ export function LoginDialogButton(props: SearchButtonProps) {
     <button
       {...props}
       className={cn(
-        'flex items-center justify-center gap-2 p-2 text-zinc-300 text-sm border border-transparent rounded-full',
-        'hover:border-zinc-700 transition-all',
+        'flex items-center justify-center gap-2 rounded-full border border-transparent p-2 text-sm text-zinc-300',
+        'transition-all hover:border-zinc-700',
         'active:scale-[0.98]',
       )}
     >

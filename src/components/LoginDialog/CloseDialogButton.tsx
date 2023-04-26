@@ -6,8 +6,8 @@ export function CloseDialogButton() {
   return (
     <Close
       className={cn(
-        'absolute top-10 right-10 text-zinc-400 p-2 rounded-lg',
-        'hover:bg-zinc-800 transition-colors',
+        'absolute right-10 top-10 rounded-lg p-2 text-zinc-400',
+        'transition-colors hover:bg-zinc-800',
         'active:scale-[0.9]',
       )}
     >

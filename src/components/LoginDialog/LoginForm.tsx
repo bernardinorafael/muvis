@@ -1,9 +1,10 @@
 import { cn } from '@/utils/cn'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Controller, useForm } from 'react-hook-form'
+import { z } from 'zod'
+
 import { Checkbox } from '../primitives/Checkbox'
 import { Input } from './Input'
-import { z } from 'zod'
-import { Controller, useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
 
 const loginSchema = z.object({
   email: z.string().email('Favor inserir um e-mail válido'),
@@ -34,7 +35,7 @@ export function LoginForm() {
   return (
     <form
       className={cn(
-        'w-full flex flex-col gap-4 p-6 border border-zinc-800 rounded-lg',
+        'flex w-full flex-col gap-4 rounded-lg border border-zinc-800 p-6',
       )}
       onSubmit={handleSubmit(handleFormLogin)}
     >
@@ -55,7 +56,7 @@ export function LoginForm() {
         {...register('password')}
       />
 
-      <div className={cn('w-full flex items-center justify-between mt-4')}>
+      <div className={cn('mt-4 flex w-full items-center justify-between')}>
         <Controller
           control={control}
           name="remember"
@@ -63,7 +64,7 @@ export function LoginForm() {
             return (
               <label
                 className={cn(
-                  'inline-flex items-center text-sm cursor-pointer select-none gap-2 text-zinc-300',
+                  'inline-flex cursor-pointer select-none items-center gap-2 text-sm text-zinc-300',
                 )}
               >
                 <Checkbox
@@ -77,8 +78,8 @@ export function LoginForm() {
 
         <span
           className={cn(
-            'underline cursor-pointer text-sm text-zinc-400',
-            'hover:text-zinc-300 transition-colors',
+            'cursor-pointer text-sm text-zinc-400 underline',
+            'transition-colors hover:text-zinc-300',
           )}
         >
           Esqueceu sua senha?
@@ -87,11 +88,11 @@ export function LoginForm() {
 
       <button
         className={cn(
-          'flex items-center mt-4 justify-center gap-3 select-none text-zinc-300 font-semibold text-lg h-12 bg-violet-900 rounded-md',
-          'hover:bg-violet-800 transition-colors',
-          'focus:outline outline-offset-2 outline-2 focus:outline-violet-800',
+          'mt-4 flex h-12 select-none items-center justify-center gap-3 rounded-md bg-violet-900 text-lg font-semibold text-zinc-300',
+          'transition-colors hover:bg-violet-800',
+          'outline-2 outline-offset-2 focus:outline focus:outline-violet-800',
           'active:scale-[0.98]',
-          'disabled:opacity-40 disabled:pointer-events-none',
+          'disabled:pointer-events-none disabled:opacity-40',
         )}
         disabled={isSubmitting}
         type="submit"

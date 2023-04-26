@@ -1,5 +1,5 @@
-import { cn } from '@/utils/cn'
 import { ForwardedRef, InputHTMLAttributes, forwardRef } from 'react'
+import { cn } from '@/utils/cn'
 
 type Ref = ForwardedRef<HTMLInputElement>
 
@@ -18,14 +18,14 @@ const InputComponent = (props: InputProps, ref: Ref) => {
       <input
         ref={ref}
         className={cn(
-          'h-12 rounded-md bg-zinc-800 border border-transparent placeholder:text-zinc-500 px-4 text-lg',
-          'focus:outline outline-offset-2 outline-2 focus:outline-zinc-800',
-          { 'focus:outline-red-900 border-red-900': error },
+          'h-12 rounded-md border border-transparent bg-zinc-800 px-4 text-lg placeholder:text-zinc-500',
+          'outline-2 outline-offset-2 focus:outline focus:outline-zinc-800',
+          { 'border-red-900 focus:outline-red-900': error },
         )}
         {...rest}
       />
       {error && (
-        <span className={cn('text-sm font-semibold -mt-2 text-red-900')}>
+        <span className={cn('-mt-2 text-sm font-semibold text-red-900')}>
           {message}
         </span>
       )}

@@ -1,8 +1,9 @@
 import { cn } from '@/utils/cn'
-import { Input } from './Input'
-import { z } from 'zod'
-import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+
+import { Input } from './Input'
 
 const createAccountSchema = z
   .object({
@@ -62,7 +63,7 @@ export function CreateAccountForm() {
   return (
     <form
       className={cn(
-        'w-full flex flex-col gap-4 p-6 border border-zinc-800 rounded-lg',
+        'flex w-full flex-col gap-4 rounded-lg border border-zinc-800 p-6',
       )}
       onSubmit={handleSubmit(handleCreateNewUser)}
     >
@@ -111,20 +112,20 @@ export function CreateAccountForm() {
 
       <span
         className={cn(
-          'underline cursor-pointer text-sm text-zinc-400',
-          'hover:text-zinc-300 transition-colors',
+          'cursor-pointer text-sm text-zinc-400 underline',
+          'transition-colors hover:text-zinc-300',
         )}
       >
         Ajuda com a senha?
       </span>
 
-      <span className={cn('text-xs leading-tight text-zinc-400 mt-4')}>
+      <span className={cn('mt-4 text-xs leading-tight text-zinc-400')}>
         Ao clicar em criar conta com o processo de criação de conta, você está
         concordando com nossos{' '}
         <span
           className={cn(
-            'underline cursor-pointer',
-            'hover:text-zinc-300 transition-colors',
+            'cursor-pointer underline',
+            'transition-colors hover:text-zinc-300',
           )}
         >
           Termos de Uso
@@ -134,10 +135,10 @@ export function CreateAccountForm() {
 
       <button
         className={cn(
-          'flex items-center mt-4 justify-center gap-3 text-zinc-300 font-semibold text-lg h-12 bg-violet-900 rounded-md',
-          'hover:bg-violet-800 transition-colors',
-          'disabled:opacity-40 disabled:pointer-events-none',
-          'focus:outline outline-offset-2 outline-2 focus:outline-violet-800',
+          'mt-4 flex h-12 items-center justify-center gap-3 rounded-md bg-violet-900 text-lg font-semibold text-zinc-300',
+          'transition-colors hover:bg-violet-800',
+          'disabled:pointer-events-none disabled:opacity-40',
+          'outline-2 outline-offset-2 focus:outline focus:outline-violet-800',
           'active:scale-[0.98]',
         )}
         disabled={isSubmitting}

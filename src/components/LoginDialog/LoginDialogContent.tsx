@@ -1,7 +1,8 @@
+import { ReactNode } from 'react'
 import { cn } from '@/utils/cn'
 import * as DialogComponent from '@radix-ui/react-dialog'
 import * as TabsComponent from '@radix-ui/react-tabs'
-import { ReactNode } from 'react'
+
 import { CloseDialogButton } from './CloseDialogButton'
 import { CreateAccountForm } from './CreateAccountForm'
 import { LoginForm } from './LoginForm'
@@ -18,37 +19,37 @@ export function LoginDialogContent({ children, ...props }: SearchMoviesProps) {
       <DialogComponent.Portal>
         <DialogComponent.Overlay
           className={cn(
-            'fixed inset-0 z-50 w-screen h-screen flex items-center justify-center',
+            'fixed inset-0 z-50 flex h-screen w-screen items-center  justify-center',
           )}
         />
 
         <DialogComponent.Content
           className={cn(
-            'absolute top-0 overflow-auto flex flex-col gap-8 z-50 h-screen w-screen bg-zinc-900 py-14',
+            'absolute top-0 z-50 flex h-screen w-screen flex-col gap-8 overflow-auto bg-zinc-900 py-14',
             'data-[state=open]:animate-search-dialog-shown',
           )}
         >
           <CloseDialogButton />
 
           <DialogComponent.Title
-            className={cn('text-center text-zinc-300 font-semibold text-4xl')}
+            className={cn('text-center text-4xl font-semibold text-zinc-300')}
           >
             Faça login ou crie sua conta
           </DialogComponent.Title>
 
           <TabsComponent.Root
-            className={cn('w-full max-w-xl mx-auto shadow-lg')}
+            className={cn('mx-auto w-full max-w-xl shadow-lg')}
             defaultValue="login"
           >
             <TabsComponent.List
               className={cn(
-                'mb-4 p-2 bg-zinc-800 rounded-lg grid grid-cols-2 gap-5 shadow-xl',
+                'mb-4 grid grid-cols-2 gap-5 rounded-lg bg-zinc-800 p-2 shadow-xl',
               )}
             >
               <TabsComponent.Trigger
                 className={cn(
-                  'text-zinc-300 font-semibold h-10 rounded-lg',
-                  'data-[state=active]:bg-zinc-950 transition-colors',
+                  'h-10 rounded-lg font-semibold text-zinc-300',
+                  'transition-colors data-[state=active]:bg-zinc-950',
                   'active:scale-[0.95]',
                 )}
                 value="login"
@@ -58,8 +59,8 @@ export function LoginDialogContent({ children, ...props }: SearchMoviesProps) {
 
               <TabsComponent.Trigger
                 className={cn(
-                  'text-zinc-300 font-semibold h-10 rounded-lg',
-                  'data-[state=active]:bg-zinc-950 transition-colors',
+                  'h-10 rounded-lg font-semibold text-zinc-300',
+                  'transition-colors data-[state=active]:bg-zinc-950',
                   'active:scale-[0.95]',
                 )}
                 value="create-account"

@@ -1,7 +1,8 @@
 import { cn } from '@/utils/cn'
 import { CaretDown } from '@phosphor-icons/react'
-import { LoginDialogContent } from './LoginDialog/LoginDialogContent'
+
 import { LoginDialogButton } from './LoginDialog/LoginDialogButton'
+import { LoginDialogContent } from './LoginDialog/LoginDialogContent'
 
 export function Header() {
   const BUTTONS_NAV = ['Home', 'Categorias', 'Minha lista']
@@ -9,12 +10,12 @@ export function Header() {
   return (
     <header
       className={cn(
-        'w-full h-16 flex items-center shadow-2xl border-b border-zinc-800',
+        'flex h-16 w-full items-center border-b border-zinc-800 shadow-2xl',
       )}
     >
       <div
         className={cn(
-          'flex items-center justify-between w-full max-w-[1100px] mx-auto px-4 h-full',
+          'mx-auto flex h-full w-full max-w-[1100px] items-center justify-between px-4',
         )}
       >
         <div className={cn('flex items-center gap-6')}>
@@ -23,8 +24,8 @@ export function Header() {
               return (
                 <button
                   className={cn(
-                    'font-semibold text-sm flex items-center justify-center gap-2 px-3 py-2 rounded-md text-zinc-400',
-                    'hover:bg-zinc-800 hover:text-zinc-200 transition-all',
+                    'flex items-center justify-center gap-2 rounded-md px-3 py-2 text-sm font-semibold text-zinc-400',
+                    'transition-all hover:bg-zinc-800 hover:text-zinc-200',
                     'active:scale-[0.95]',
                   )}
                   key={i}
