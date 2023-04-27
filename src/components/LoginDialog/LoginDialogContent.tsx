@@ -43,12 +43,12 @@ export function LoginDialogContent({ children, ...props }: SearchMoviesProps) {
           >
             <TabsComponent.List
               className={cn(
-                'mb-4 grid grid-cols-2 gap-5 rounded-lg bg-zinc-800 p-2 shadow-xl',
+                'mb-4 grid grid-cols-2 gap-5 rounded bg-zinc-800 p-2 shadow-xl',
               )}
             >
               <TabsComponent.Trigger
                 className={cn(
-                  'h-10 rounded-lg font-semibold text-zinc-300',
+                  'h-10 rounded font-semibold text-zinc-300',
                   'transition-colors data-[state=active]:bg-zinc-950',
                   'active:scale-[0.95]',
                 )}
@@ -59,7 +59,7 @@ export function LoginDialogContent({ children, ...props }: SearchMoviesProps) {
 
               <TabsComponent.Trigger
                 className={cn(
-                  'h-10 rounded-lg font-semibold text-zinc-300',
+                  'h-10 rounded font-semibold text-zinc-300',
                   'transition-colors data-[state=active]:bg-zinc-950',
                   'active:scale-[0.95]',
                 )}

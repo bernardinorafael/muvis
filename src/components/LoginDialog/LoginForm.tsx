@@ -34,7 +34,7 @@ export function LoginForm() {
 
   return (
     <form
-      className="flex w-full flex-col gap-4 rounded-lg border border-zinc-800 p-6"
+      className="flex w-full flex-col gap-4 rounded border border-zinc-800 p-6"
       onSubmit={handleSubmit(handleFormLogin)}
     >
       <Input
@@ -86,7 +86,7 @@ export function LoginForm() {
 
       <button
         className={cn(
-          'mt-4 flex h-12 select-none items-center justify-center gap-3 rounded-md bg-violet-900 text-lg font-semibold text-zinc-300',
+          'mt-4 flex h-12 select-none items-center justify-center gap-3 rounded bg-violet-900 text-lg font-semibold text-zinc-300',
           'transition-colors hover:bg-violet-800',
           'outline-2 outline-offset-2 focus:outline focus:outline-violet-800',
           'active:scale-[0.98]',

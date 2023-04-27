@@ -62,9 +62,7 @@ export function CreateAccountForm() {
 
   return (
     <form
-      className={cn(
-        'flex w-full flex-col gap-4 rounded-lg border border-zinc-800 p-6',
-      )}
+      className={cn('flex w-full flex-col gap-4 rounded border border-zinc-800 p-6')}
       onSubmit={handleSubmit(handleCreateNewUser)}
     >
       <Input
@@ -135,7 +133,7 @@ export function CreateAccountForm() {
 
       <button
         className={cn(
-          'mt-4 flex h-12 items-center justify-center gap-3 rounded-md bg-violet-900 text-lg font-semibold text-zinc-300',
+          'mt-4 flex h-12 items-center justify-center gap-3 rounded bg-violet-900 text-lg font-semibold text-zinc-300',
           'transition-colors hover:bg-violet-800',
           'disabled:pointer-events-none disabled:opacity-40',
           'outline-2 outline-offset-2 focus:outline focus:outline-violet-800',

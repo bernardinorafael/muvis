@@ -18,7 +18,7 @@ const InputComponent = (props: InputProps, ref: Ref) => {
       <input
         ref={ref}
         className={cn(
-          'h-12 rounded-md border border-transparent bg-zinc-800 px-4 text-lg placeholder:text-zinc-500',
+          'h-12 rounded border border-transparent bg-zinc-800 px-4 text-lg placeholder:text-zinc-500',
           'outline-2 outline-offset-2 focus:outline focus:outline-zinc-800',
           { 'border-red-900 focus:outline-red-900': error },
         )}

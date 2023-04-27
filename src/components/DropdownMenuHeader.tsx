@@ -14,7 +14,7 @@ export function DropdownMenuHeader(props: DropdownMenuHeaderProps) {
       <DropdownMenu.Portal>
         <DropdownMenu.Content
           className={cn(
-            'w-full rounded-md bg-zinc-800 p-2 shadow-2xl',
+            'w-full rounded bg-zinc-800 p-2 shadow-2xl',
             'data-[side=bottom]:animate-slide-down-fade',
           )}
         >
@@ -22,7 +22,7 @@ export function DropdownMenuHeader(props: DropdownMenuHeaderProps) {
             return (
               <DropdownMenu.Item
                 className={cn(
-                  'w-64 cursor-pointer rounded-md p-2 font-medium text-zinc-300',
+                  'w-64 cursor-pointer rounded p-2 font-medium text-zinc-300',
                   'data-[highlighted]:bg-zinc-950',
                   'active:scale-[0.97]',
                   'focus:outline-none',

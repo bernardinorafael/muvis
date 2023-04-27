@@ -1,10 +1,10 @@
 import '@/styles/globals.css'
 import { ComponentType, ReactNode } from 'react'
 import type { AppProps } from 'next/app'
+import LayoutRoot from '@/Layouts/LayoutRoot'
 import { QueryClientProvider } from '@tanstack/react-query'
 
 import { queryClient } from '@/lib/react-query'
-import LayoutRoot from '@/components/Layouts/LayoutRoot'
 
 type ComponentLayout = AppProps & {
   Component: AppProps['Component'] & {
