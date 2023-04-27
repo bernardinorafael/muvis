@@ -34,9 +34,7 @@ export function LoginForm() {
 
   return (
     <form
-      className={cn(
-        'flex w-full flex-col gap-4 rounded-lg border border-zinc-800 p-6',
-      )}
+      className="flex w-full flex-col gap-4 rounded-lg border border-zinc-800 p-6"
       onSubmit={handleSubmit(handleFormLogin)}
     >
       <Input

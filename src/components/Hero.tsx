@@ -3,7 +3,7 @@ import { cn } from '@/utils/cn'
 
 export function Hero() {
   return (
-    <div className={cn('relative h-[740px] w-full', '2xl:h-[480px]')}>
+    <div className={cn('relative h-[740px] w-full select-none', '2xl:h-[480px]')}>
       <Image
         fill
         priority

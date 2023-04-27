@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import { cn } from '@/utils/cn'
 
 import { Hero } from '@/components/Hero'
 
@@ -20,7 +19,7 @@ export default function Home() {
         <title>Home | Muvis</title>
       </Head>
 
-      <div className={cn('h-screen w-full bg-zinc-900 text-white')}>
+      <div className="h-screen w-full bg-zinc-900 text-white">
         <Hero />
       </div>
     </>

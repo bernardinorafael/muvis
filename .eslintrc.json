@@ -13,12 +13,13 @@
     "prettier/prettier": [
       0,
       {
-        "printWidth": 85,
+        // "printWidth": 85,
         "tabWidth": 2,
         "singleQuote": true,
         "trailingComma": "all",
         "arrowParens": "always",
-        "semi": false
+        "semi": false,
+        "proseWrap": "never"
       }
     ],
 

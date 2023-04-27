@@ -12,11 +12,18 @@ module.exports = {
           from: { transform: 'translateY(-100%)' },
           to: { transform: 'translateY(0)' },
         },
+
+        'slide-down-fade': {
+          from: { transform: 'translateY(8px)' },
+          to: { transform: 'translateY(0)' },
+        },
       },
 
       animation: {
         'search-dialog-shown':
-          'search-dialog-shown 400ms cubic-bezier(0.16, 1, 0.3, 1)',
+          'search-dialog-shown 300ms cubic-bezier(0.16, 1, 0.3, 1)',
+
+        'slide-down-fade': 'slide-down-fade 400ms cubic-bezier(0.16, 1, 0.3, 1)',
       },
 
       lineHeight: {
@@ -31,6 +38,10 @@ module.exports = {
       md: { max: '767px' },
       sm: { max: '639px' },
       xs: { max: '439px' },
+    },
+
+    fontFamily: {
+      styled: 'Montserrat Subrayada',
     },
   },
 
