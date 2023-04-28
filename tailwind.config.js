@@ -41,7 +41,7 @@ module.exports = {
     },
 
     boxShadow: {
-      '4xl': 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
+      '4xl': 'rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px',
     },
 
     fontFamily: {

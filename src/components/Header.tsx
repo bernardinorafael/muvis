@@ -23,7 +23,7 @@ export function Header() {
               <button
                 className={cn(
                   'flex select-none items-center justify-center gap-2 rounded p-3 text-sm font-semibold text-zinc-400',
-                  'transition-all hover:bg-zinc-800 hover:text-zinc-200',
+                  'transition-colors hover:bg-zinc-800 hover:text-zinc-200',
                 )}
               >
                 Categorias

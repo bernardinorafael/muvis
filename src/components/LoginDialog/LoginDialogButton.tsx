@@ -10,7 +10,8 @@ export function LoginDialogButton(props: SearchButtonProps) {
       {...props}
       className={cn(
         'flex items-center justify-center gap-2 rounded-full border border-transparent p-2 text-sm text-zinc-300',
-        'transition-all hover:border-zinc-700',
+        'hover:border-zinc-700 hover:transition-all',
+        'outline-2 outline-offset-2 outline-zinc-800 focus-within:outline',
       )}
     >
       <User className={cn('fill-zinc-600')} size={28} weight="duotone" />

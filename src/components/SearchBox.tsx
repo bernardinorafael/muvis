@@ -1,5 +1,5 @@
 import { cn } from '@/utils/cn'
-import { MagnifyingGlass } from '@phosphor-icons/react'
+import { Command, MagnifyingGlass } from '@phosphor-icons/react'
 
 export function SearchBox() {
   return (
@@ -20,6 +20,11 @@ export function SearchBox() {
         type="text"
         placeholder="Buscar"
       />
+
+      <div className="flex select-none items-center rounded border border-zinc-800 bg-zinc-900 p-1">
+        <Command size={18} />
+        <span className="text-sm">K</span>
+      </div>
     </div>
   )
 }
