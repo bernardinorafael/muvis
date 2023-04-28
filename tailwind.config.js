@@ -46,6 +46,8 @@ module.exports = {
 
     fontFamily: {
       styled: 'Montserrat Subrayada',
+      sans: 'Inter',
+      cursive: 'Bebas Neue',
     },
   },
 

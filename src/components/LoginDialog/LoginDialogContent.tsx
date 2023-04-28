@@ -27,15 +27,15 @@ export function LoginDialogContent({ children, ...props }: SearchMoviesProps) {
         >
           <CloseDialogButton />
 
-          <DialogComponent.Title className="text-center text-4xl font-semibold text-zinc-300">
-            Faça login ou crie sua conta
+          <DialogComponent.Title className="text-center text-5xl font-extrabold leading-tight text-zinc-300">
+            Sign-in
           </DialogComponent.Title>
 
           <TabsComponent.Root
-            className={cn('mx-auto w-full max-w-xl shadow-lg')}
+            className={cn('shadow-lg mx-auto w-full max-w-xl')}
             defaultValue="login"
           >
-            <TabsComponent.List className="mb-4 grid grid-cols-2 gap-5 rounded bg-zinc-800 p-2 shadow-xl">
+            <TabsComponent.List className="shadow-xl mb-4 grid grid-cols-2 gap-5 rounded bg-zinc-800 p-2">
               <TabsComponent.Trigger
                 className={cn(
                   'h-10 rounded font-semibold text-zinc-300',
