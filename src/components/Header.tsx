@@ -9,7 +9,7 @@ import { SearchBox } from './SearchBox'
 
 export function Header() {
   return (
-    <header className="flex h-20 w-full items-center border-b border-zinc-800 shadow-2xl">
+    <header className="shadow-2xl flex h-16 w-full items-center border-b border-zinc-800">
       <div className="mx-auto flex h-full w-full max-w-[1100px] items-center justify-between px-4">
         <Link className="active:scale-[0.95]" href="/">
           <Popcorn className="fill-zinc-400" size={38} weight="fill" />
@@ -22,9 +22,8 @@ export function Header() {
             <DropdownMenuHeader>
               <button
                 className={cn(
-                  'flex select-none items-center justify-center gap-2 rounded px-3 py-2 text-sm font-semibold text-zinc-400',
+                  'flex select-none items-center justify-center gap-2 rounded p-3 text-sm font-semibold text-zinc-400',
                   'transition-all hover:bg-zinc-800 hover:text-zinc-200',
-                  // 'outline-2 outline-offset-2 focus:outline focus:outline-zinc-800',
                 )}
               >
                 Categorias

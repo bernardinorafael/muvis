@@ -7,6 +7,19 @@ interface DropdownMenuHeaderProps {
 }
 
 export function DropdownMenuHeader(props: DropdownMenuHeaderProps) {
+  const CATEGORIES = [
+    'Ação',
+    'Animação',
+    'Comédia',
+    'Documentário',
+    'Drama',
+    'Fantasia',
+    'Ficção científica',
+    'Horror',
+    'Romance',
+    'Suspense',
+  ]
+
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger asChild>{props.children}</DropdownMenu.Trigger>
@@ -14,11 +27,12 @@ export function DropdownMenuHeader(props: DropdownMenuHeaderProps) {
       <DropdownMenu.Portal>
         <DropdownMenu.Content
           className={cn(
-            'w-full rounded bg-zinc-800 p-2 shadow-2xl',
+            'w-full rounded bg-zinc-800 p-2 shadow-4xl',
             'data-[side=bottom]:animate-slide-down-fade',
           )}
+          align="end"
         >
-          {Array.from({ length: 8 }).map((_, index) => {
+          {CATEGORIES.map((category, i) => {
             return (
               <DropdownMenu.Item
                 className={cn(
@@ -27,9 +41,9 @@ export function DropdownMenuHeader(props: DropdownMenuHeaderProps) {
                   'active:scale-[0.97]',
                   'focus:outline-none',
                 )}
-                key={index}
+                key={i}
               >
-                Hi Lorena
+                {category}
               </DropdownMenu.Item>
             )
           })}

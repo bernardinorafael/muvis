@@ -17,11 +17,7 @@ export function LoginDialogContent({ children, ...props }: SearchMoviesProps) {
       <DialogComponent.Trigger asChild>{children}</DialogComponent.Trigger>
 
       <DialogComponent.Portal>
-        <DialogComponent.Overlay
-          className={cn(
-            'fixed inset-0 z-50 flex h-screen w-screen items-center  justify-center',
-          )}
-        />
+        <DialogComponent.Overlay className="fixed inset-0 z-50 flex h-screen w-screen items-center justify-center" />
 
         <DialogComponent.Content
           className={cn(
@@ -31,9 +27,7 @@ export function LoginDialogContent({ children, ...props }: SearchMoviesProps) {
         >
           <CloseDialogButton />
 
-          <DialogComponent.Title
-            className={cn('text-center text-4xl font-semibold text-zinc-300')}
-          >
+          <DialogComponent.Title className="text-center text-4xl font-semibold text-zinc-300">
             Faça login ou crie sua conta
           </DialogComponent.Title>
 
@@ -41,11 +35,7 @@ export function LoginDialogContent({ children, ...props }: SearchMoviesProps) {
             className={cn('mx-auto w-full max-w-xl shadow-lg')}
             defaultValue="login"
           >
-            <TabsComponent.List
-              className={cn(
-                'mb-4 grid grid-cols-2 gap-5 rounded bg-zinc-800 p-2 shadow-xl',
-              )}
-            >
+            <TabsComponent.List className="mb-4 grid grid-cols-2 gap-5 rounded bg-zinc-800 p-2 shadow-xl">
               <TabsComponent.Trigger
                 className={cn(
                   'h-10 rounded font-semibold text-zinc-300',
