@@ -22,13 +22,21 @@ module.exports = {
           from: { transform: 'translateY(-100%)' },
           to: { transform: 'translateY(0)' },
         },
+        'sheet-movie-information': {
+          from: { transform: 'translateX(100%)' },
+          to: { transform: 'translateX(0)' },
+        },
       },
 
       animation: {
         'search-dialog-shown':
           'search-dialog-shown 300ms cubic-bezier(0.16, 1, 0.3, 1)',
 
+        'sheet-movie-information':
+          'sheet-movie-information 400ms cubic-bezier(0.16, 1, 0.3, 1)',
+
         'slide-down-fade': 'slide-down-fade 400ms cubic-bezier(0.16, 1, 0.3, 1)',
+
         'shown-header': 'shown-header 400ms ease-in-out',
       },
 
@@ -48,6 +56,7 @@ module.exports = {
 
     boxShadow: {
       '4xl': 'rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px',
+      '5xl': 'rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px',
     },
 
     fontFamily: {

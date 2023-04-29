@@ -6,21 +6,19 @@ interface HeroBannerMaskProps {}
 
 export function HeroBannerMask(props: HeroBannerMaskProps) {
   return (
-    <div className="absolute z-10 flex h-full w-full flex-col justify-center p-10">
+    <div className="absolute z-50 flex h-full w-full flex-col justify-center p-10">
       <div
         className={cn('flex w-full max-w-[50%] flex-col gap-2', 'md:max-w-[75%]')}
       >
-        <Balancer>
-          <h1
-            className={cn(
-              'font-cursive text-9xl tracking-tight text-white',
-              '2xl:text-7xl',
-              'xl:text-6xl',
-            )}
-          >
-            Mad Max: Estrada da Fúria
-          </h1>
-        </Balancer>
+        <h1
+          className={cn(
+            'font-cursive text-9xl tracking-tight text-white',
+            '2xl:text-7xl',
+            'xl:text-6xl',
+          )}
+        >
+          <Balancer>Mad Max: Estrada da Fúria</Balancer>
+        </h1>
 
         <div className="flex items-center gap-1">
           <Star size={26} weight="fill" className="fill fill-yellow-400" />

@@ -11,7 +11,7 @@ export function MovieCard(props: MovieCardProps) {
       <Image
         className={cn(
           'cursor-pointer rounded-lg object-cover object-top opacity-50',
-          'transition-transform group-hover:z-10 group-hover:scale-110',
+          'transition-transform group-hover:z-10 group-hover:scale-110 group-hover:shadow-5xl',
           'transition-all duration-300 hover:opacity-100',
         )}
         priority
