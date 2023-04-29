@@ -7,9 +7,17 @@ interface HeroBannerMaskProps {}
 export function HeroBannerMask(props: HeroBannerMaskProps) {
   return (
     <div className="absolute z-10 flex h-full w-full flex-col justify-center p-10">
-      <div className={cn('flex max-w-[50%] flex-col gap-2')}>
+      <div
+        className={cn('flex w-full max-w-[50%] flex-col gap-2', 'md:max-w-[75%]')}
+      >
         <Balancer>
-          <h1 className={cn('font-cursive text-9xl tracking-tight text-white')}>
+          <h1
+            className={cn(
+              'font-cursive text-9xl tracking-tight text-white',
+              '2xl:text-7xl',
+              'xl:text-6xl',
+            )}
+          >
             Mad Max: Estrada da Fúria
           </h1>
         </Balancer>
@@ -19,18 +27,25 @@ export function HeroBannerMask(props: HeroBannerMaskProps) {
           <span className="pt-1 text-lg font-medium">8.2 | 3478</span>
         </div>
 
-        <p className="mt-2 max-w-[75%] text-lg text-zinc-400">
+        <p
+          className={cn(
+            'mt-2 max-w-[75%] text-lg text-zinc-400',
+            '2xl:max-w-[100%]',
+            'xl:text-base',
+            'md:hidden',
+          )}
+        >
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae provident
           soluta veritatis sed aliquid quasi autem doloribus odio pariatur. Vitae
           cumque dolore molestiae iusto facere omnis voluptates eaque a voluptatibus?
         </p>
 
         <div className="flex items-center gap-1">
-          <span className="text-base text-zinc-300">2h35</span>
-          <span className="text-base text-zinc-300">•</span>
-          <span className="text-base text-zinc-300">Ação, Aventura, Drama</span>
-          <span className="text-base text-zinc-300">•</span>
-          <span className="text-base text-zinc-300">2021</span>
+          <span className="font-bold text-zinc-400">2h35</span>
+          <span className="font-bold text-zinc-400">•</span>
+          <span className="font-bold text-zinc-400">Ação, Aventura, Drama</span>
+          <span className="font-bold text-zinc-400">•</span>
+          <span className="font-bold text-zinc-400">2021</span>
         </div>
 
         <button
@@ -39,6 +54,7 @@ export function HeroBannerMask(props: HeroBannerMaskProps) {
             'outline-2 outline-offset-2 outline-violet-800 focus-within:outline',
             'transition-colors hover:bg-violet-700',
             'active:scale-95',
+            'xl:px-7 xl:py-3',
           )}
         >
           <Play size={34} weight="fill" />
