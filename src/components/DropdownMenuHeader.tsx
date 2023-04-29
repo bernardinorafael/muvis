@@ -24,7 +24,7 @@ export function DropdownMenuHeader(props: DropdownMenuHeaderProps) {
       <DropdownMenu.Portal>
         <DropdownMenu.Content
           className={cn(
-            'w-full rounded border border-zinc-800 bg-zinc-900 p-2 shadow-4xl',
+            'z-20 w-full rounded border border-zinc-800 bg-zinc-900 p-2 shadow-4xl',
             'data-[side=bottom]:animate-slide-down-fade',
           )}
           align="end"

@@ -1,4 +1,6 @@
+import React from 'react'
 import Link from 'next/link'
+import { useHeaderSticky } from '@/hook/use-header-sticky'
 import { cn } from '@/utils/cn'
 import { CaretDown, Popcorn } from '@phosphor-icons/react'
 
@@ -8,8 +10,18 @@ import { LoginDialogContent } from './LoginDialog/LoginDialogContent'
 import { SearchBox } from './SearchBox'
 
 export function Header() {
+  const headerRef = React.useRef(null)
+
+  const { isHeaderShown } = useHeaderSticky()
+
   return (
-    <header className="shadow-2xl flex h-16 w-full items-center border-b border-zinc-800">
+    <header
+      className={cn(
+        'shadow-2xl flex h-16 w-full items-center border-b border-zinc-800 bg-zinc-900',
+        { 'sticky top-0 z-20 animate-shown-header shadow-4xl': isHeaderShown },
+      )}
+      ref={headerRef}
+    >
       <div className="mx-auto flex h-full w-full max-w-[1100px] items-center justify-between px-4">
         <Link className="active:scale-[0.95]" href="/">
           <Popcorn className="fill-zinc-400" size={38} weight="fill" />

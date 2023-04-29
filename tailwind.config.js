@@ -17,6 +17,11 @@ module.exports = {
           from: { transform: 'translateY(8px)' },
           to: { transform: 'translateY(0)' },
         },
+
+        'shown-header': {
+          from: { transform: 'translateY(-100%)' },
+          to: { transform: 'translateY(0)' },
+        },
       },
 
       animation: {
@@ -24,6 +29,7 @@ module.exports = {
           'search-dialog-shown 300ms cubic-bezier(0.16, 1, 0.3, 1)',
 
         'slide-down-fade': 'slide-down-fade 400ms cubic-bezier(0.16, 1, 0.3, 1)',
+        'shown-header': 'shown-header 400ms ease-in-out',
       },
 
       lineHeight: {
