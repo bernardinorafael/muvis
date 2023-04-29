@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { cn } from '@/utils/cn'
-import { FilmStrip, Star, User } from '@phosphor-icons/react'
+import { FilmStrip, SpinnerGap, Star } from '@phosphor-icons/react'
 import * as DialogComponent from '@radix-ui/react-dialog'
 import { useQuery } from '@tanstack/react-query'
 import dayjs from 'dayjs'
@@ -13,6 +13,7 @@ import { api } from '@/lib/axios'
 
 import { ImageOverlay } from '../ImageOverlay'
 import { CloseDialogButton } from '../LoginDialog/CloseDialogButton'
+import { FallbackCast } from './components/FallbackCast'
 
 interface SheetMoviePreviewProps {
   children: React.ReactNode
@@ -20,15 +21,12 @@ interface SheetMoviePreviewProps {
 }
 
 export function SheetMoviePreview({ movieId, children }: SheetMoviePreviewProps) {
-  const { data: movie } = useQuery(
-    ['movie', movieId],
-    async (): Promise<MovieDetailed> => {
-      const response = await api.get(`/movie/${movieId}`, {
-        params: { language: 'pt-BR' },
-      })
-      return response.data
-    },
-  )
+  const movie = useQuery(['movie', movieId], async (): Promise<MovieDetailed> => {
+    const response = await api.get(`/movie/${movieId}`, {
+      params: { language: 'pt-BR' },
+    })
+    return response.data
+  })
 
   const { data: cast } = useQuery(['cast', movieId], async (): Promise<Cast[]> => {
     const response = await api.get(`/movie/${movieId}/credits`, {
@@ -50,48 +48,57 @@ export function SheetMoviePreview({ movieId, children }: SheetMoviePreviewProps)
 
         <DialogComponent.Content
           className={cn(
-            'fixed right-0 top-0 z-50 flex min-h-screen w-full max-w-[720px] flex-col overflow-scroll bg-zinc-900',
+            'fixed right-0 top-0 z-50 flex min-h-screen w-full max-w-[720px] flex-col overflow-auto bg-zinc-900',
             'data-[state=open]:animate-sheet-movie-information',
           )}
         >
           <CloseDialogButton />
 
-          <div className={cn('relative h-[330px] w-full')} title={movie?.title!}>
-            <Image
-              className={cn('object-cover object-top')}
-              src={`https://image.tmdb.org/t/p/w1280/${movie?.backdrop_path}`}
-              alt={movie?.title!}
-              fill
-            />
+          <div
+            className={cn('relative h-[330px] w-full')}
+            title={movie.data?.title!}
+          >
+            {!movie.isLoading ? (
+              <Image
+                className={cn('object-cover object-top')}
+                src={`https://image.tmdb.org/t/p/w1280/${movie.data?.backdrop_path}`}
+                alt={movie.data?.title!}
+                fill
+              />
+            ) : (
+              <div className="flex h-full w-full  items-center justify-center text-white">
+                <SpinnerGap className="animate-spin" size={38} />
+              </div>
+            )}
 
             <ImageOverlay />
           </div>
 
           <section className={cn('z-50 flex w-full flex-col gap-3 p-6')}>
             <h1 className="-mt-12 font-cursive text-7xl tracking-tight text-zinc-300">
-              <Balancer>{movie?.title}</Balancer>
+              <Balancer>{movie.data?.title}</Balancer>
             </h1>
 
             <div className="group flex w-full items-center justify-start gap-1">
               <Star size={24} weight="fill" className="fill fill-yellow-400" />
               <span className="pt-1 text-lg font-medium text-zinc-300">
-                {movie?.vote_average} | {movie?.vote_count}
+                {movie.data?.vote_average} | {movie.data?.vote_count}
               </span>
 
               <div className="ml-auto flex flex-col text-right leading-none">
                 <strong className="font-medium text-zinc-300">Lançamento</strong>
                 <span className="text-lg font-bold text-green-800">
-                  {formatDate(movie?.release_date!)}
+                  {formatDate(movie.data?.release_date!)}
                 </span>
               </div>
             </div>
 
             <p className="mt-2 text-sm font-medium leading-relaxed text-zinc-500">
-              {movie?.overview}
+              {movie.data?.overview}
             </p>
 
             <div className="flex select-none items-center gap-1 self-start rounded bg-zinc-800 p-2">
-              {movie?.genres.map((genre) => {
+              {movie.data?.genres.map((genre) => {
                 return (
                   <strong
                     className="rounded bg-zinc-950 px-4 py-1 text-xs text-zinc-200"
@@ -126,14 +133,10 @@ export function SheetMoviePreview({ movieId, children }: SheetMoviePreviewProps)
                         height={38}
                         width={38}
                         src={`https://image.tmdb.org/t/p/w185/${actor.profile_path}`}
-                        alt=""
+                        alt={actor.name}
                       />
                     ) : (
-                      <User
-                        className="fill fill-zinc-300"
-                        size={38}
-                        weight="light"
-                      />
+                      <FallbackCast />
                     )}
 
                     <div className="flex flex-col">
