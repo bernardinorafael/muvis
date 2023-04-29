@@ -10,7 +10,7 @@ export function MovieCard(props: MovieCardProps) {
     <div className={cn('group relative h-[490px] bg-opacity-40 shadow-4xl')}>
       <Image
         className={cn(
-          'cursor-pointer rounded-lg object-cover object-top opacity-50',
+          'cursor-pointer rounded-lg object-cover object-top opacity-60',
           'transition-transform group-hover:z-10 group-hover:scale-110 group-hover:shadow-5xl',
           'transition-all duration-300 hover:opacity-100',
         )}

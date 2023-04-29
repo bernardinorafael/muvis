@@ -6,7 +6,7 @@ import { Header } from '@/components/Header'
 
 export default function LayoutRoot({ children }: { children: ReactNode }) {
   return (
-    <main className={cn('w-full bg-zinc-900 text-white')}>
+    <main className={cn('h-full w-full bg-zinc-900 text-white')}>
       <Header />
       {children}
       <Footer />

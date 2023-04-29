@@ -1,14 +1,31 @@
 import { ReactNode } from 'react'
 import { cn } from '@/utils/cn'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
+import { useQuery } from '@tanstack/react-query'
 
-import { CATEGORIES } from '@/config/menu-categories'
+import { api } from '@/lib/axios'
 
 interface DropdownMenuHeaderProps {
   children: ReactNode
 }
 
+interface Category {
+  id: number
+  name: string
+}
+
 export function DropdownMenuHeader(props: DropdownMenuHeaderProps) {
+  const { data: categories } = useQuery(
+    ['movie-categories'],
+    async (): Promise<Category[]> => {
+      const response = await api.get('/genre/movie/list', {
+        params: { language: 'pt-BR' },
+      })
+      return response.data.genres
+    },
+    { cacheTime: Infinity },
+  )
+
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger
@@ -29,7 +46,7 @@ export function DropdownMenuHeader(props: DropdownMenuHeaderProps) {
           )}
           align="end"
         >
-          {CATEGORIES.map(({ category, id }) => {
+          {categories?.map(({ name, id }) => {
             return (
               <DropdownMenu.Item
                 className={cn(
@@ -40,7 +57,7 @@ export function DropdownMenuHeader(props: DropdownMenuHeaderProps) {
                 )}
                 key={id}
               >
-                {category}
+                {name}
               </DropdownMenu.Item>
             )
           })}
