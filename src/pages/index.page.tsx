@@ -47,7 +47,7 @@ export const getStaticProps: GetStaticProps = async () => {
       horrorMovies: filteredMovies(horrorMoviesRaw),
       animationMovies: filteredMovies(animationMoviesRaw),
       crimeMovies: filteredMovies(crimeMoviesRaw),
-      discoverMoviesHero: discoverMoviesRaw.results,
+      discoverMoviesHero: discoverMoviesRaw.results.slice(0, 3),
     },
 
     revalidate: 60 * 60 * 24, // 1 day

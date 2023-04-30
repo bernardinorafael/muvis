@@ -1,9 +1,10 @@
 import React from 'react'
 import Image from 'next/image'
 import { cn } from '@/utils/cn'
-import { ArrowRight, SpinnerGap, Star } from '@phosphor-icons/react'
+import { ArrowRight, Star } from '@phosphor-icons/react'
 import * as DialogComponent from '@radix-ui/react-dialog'
 import { useQuery } from '@tanstack/react-query'
+import axios from 'axios'
 import dayjs from 'dayjs'
 import Balancer from 'react-wrap-balancer'
 
@@ -43,7 +44,35 @@ export function SheetMoviePreview({ movieId, children }: SheetMoviePreviewProps)
     { staleTime: 60 * 60 * 24 }, // 1day
   )
 
+  const fallback = useQuery(
+    ['fallback-image', movie.data?.backdrop_path],
+    async () => {
+      const response = await axios.post(
+        'https://api.blur-hash.com/blur/url',
+        {
+          imageUrl: {
+            value: `https://image.tmdb.org/t/p/w1280/${movie.data?.backdrop_path}`,
+            quality: 2,
+          },
+        },
+        {
+          headers: {
+            'x-api-key': process.env.NEXT_PUBLIC_BLUR_HASH_API_KEY,
+          },
+        },
+      )
+      return response.data
+    },
+    { enabled: Boolean(movie.data?.backdrop_path) },
+  )
+
   const formatDate = (date: string) => dayjs(date).format('DD[ de ]MMMM[ de ]YYYY')
+
+  /**
+   *  <div className="flex h-full w-full  items-center justify-center text-white">
+        <SpinnerGap className="animate-spin" size={38} />
+      </div>
+   */
 
   return (
     <DialogComponent.Root>
@@ -64,18 +93,14 @@ export function SheetMoviePreview({ movieId, children }: SheetMoviePreviewProps)
 
           <div className="h-[100vh] overflow-y-auto">
             <div className="relative -z-10 h-[330px]" title={movie.data?.title!}>
-              {!movie.isLoading && !movie.isFetching ? (
-                <Image
-                  className={cn('object-cover object-top')}
-                  src={`https://image.tmdb.org/t/p/w1280/${movie.data?.backdrop_path}`}
-                  alt={movie.data?.title!}
-                  fill
-                />
-              ) : (
-                <div className="flex h-full w-full  items-center justify-center text-white">
-                  <SpinnerGap className="animate-spin" size={38} />
-                </div>
-              )}
+              <Image
+                placeholder="blur"
+                blurDataURL={fallback.data}
+                className={cn('object-cover object-top')}
+                src={`https://image.tmdb.org/t/p/w1280/${movie.data?.backdrop_path}`}
+                alt={movie.data?.title!}
+                fill
+              />
 
               <ImageOverlay />
             </div>
