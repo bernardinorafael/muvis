@@ -47,7 +47,7 @@ export const getStaticProps: GetStaticProps = async () => {
       horrorMovies: filteredMovies(horrorMoviesRaw),
       animationMovies: filteredMovies(animationMoviesRaw),
       crimeMovies: filteredMovies(crimeMoviesRaw),
-      discoverMoviesHero: discoverMoviesRaw.results.slice(0, 3),
+      discoverMoviesHero: discoverMoviesRaw.results[0],
     },
 
     revalidate: 60 * 60 * 24, // 1 day
@@ -61,7 +61,7 @@ interface HomeProps {
   horrorMovies: PickedMovie[]
   animationMovies: PickedMovie[]
   crimeMovies: PickedMovie[]
-  discoverMoviesHero: Movie[]
+  discoverMoviesHero: Movie
 }
 
 export default function Home(props: HomeProps) {
@@ -71,7 +71,7 @@ export default function Home(props: HomeProps) {
         <title>Home | Muvis</title>
       </Head>
 
-      <Hero movies={props.discoverMoviesHero} />
+      <Hero movie={props.discoverMoviesHero} />
 
       <section className="flex flex-col gap-10 py-5 pl-10">
         <HeaderCarouselMovies description="Em cartaz no cinema" href="/" />
