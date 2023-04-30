@@ -11,7 +11,7 @@ import { MovieCard } from '@/components/MovieCard'
 import { SheetMoviePreview } from '@/components/SheetMoviePreview'
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { data: nowPlayingRaw } = await api.get('/movie/now_playing', {})
+  const { data: nowPlayingRaw } = await api.get('/movie/now_playing')
 
   const { data: horrorMoviesRaw } = await api.get('/discover/movie', {
     params: { with_genres: '27' },
@@ -23,6 +23,10 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const { data: crimeMoviesRaw } = await api.get('/discover/movie', {
     params: { with_genres: '80' },
+  })
+
+  const { data: discoverMoviesRaw } = await api.get('/discover/movie', {
+    params: { include_video: true },
   })
 
   const filteredMovies = (movies: any) => {
@@ -43,6 +47,7 @@ export const getStaticProps: GetStaticProps = async () => {
       horrorMovies: filteredMovies(horrorMoviesRaw),
       animationMovies: filteredMovies(animationMoviesRaw),
       crimeMovies: filteredMovies(crimeMoviesRaw),
+      discoverMoviesHero: discoverMoviesRaw.results,
     },
 
     revalidate: 60 * 60 * 24, // 1 day
@@ -56,6 +61,7 @@ interface HomeProps {
   horrorMovies: PickedMovie[]
   animationMovies: PickedMovie[]
   crimeMovies: PickedMovie[]
+  discoverMoviesHero: Movie[]
 }
 
 export default function Home(props: HomeProps) {
@@ -65,7 +71,7 @@ export default function Home(props: HomeProps) {
         <title>Home | Muvis</title>
       </Head>
 
-      <Hero />
+      <Hero movies={props.discoverMoviesHero} />
 
       <section className="flex flex-col gap-10 py-5 pl-10">
         <HeaderCarouselMovies description="Em cartaz no cinema" href="/" />

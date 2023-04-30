@@ -4,10 +4,20 @@ import { cn } from '@/utils/cn'
 import { HeroBannerMask } from './HeroBannerMask'
 import { ImageOverlay } from './ImageOverlay'
 import 'keen-slider/keen-slider.min.css'
+import React from 'react'
 import { useKeenSlider } from 'keen-slider/react'
 
-export function Hero() {
-  const [sliderRef] = useKeenSlider({})
+import { Movie } from '@/types/movie'
+
+interface HeroProps {
+  movies: Movie[]
+}
+
+export function Hero({ movies }: HeroProps) {
+  const [sliderRef] = useKeenSlider({
+    loop: true,
+    slides: { perView: 1 },
+  })
 
   return (
     <div
@@ -18,19 +28,25 @@ export function Hero() {
       )}
       ref={sliderRef}
     >
-      {Array.from({ length: 4 }).map((_, i) => {
+      {movies.map((movie, i) => {
         return (
           <div className="keen-slider__slide" key={i}>
             <Image
               fill
               priority
               quality={100}
-              alt="MadMax Fury Road"
-              src="/bg/mad_max-fury_road.jpg"
-              className={cn('z-10 object-cover')}
+              alt={movie.title}
+              src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+              className={cn('z-10 object-cover object-top')}
             />
 
-            <HeroBannerMask />
+            <HeroBannerMask
+              id={movie.id}
+              overview={movie.overview}
+              title={movie.title}
+              vote_average={movie.vote_average}
+              vote_count={movie.vote_count}
+            />
             <ImageOverlay />
           </div>
         )

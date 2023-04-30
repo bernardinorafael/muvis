@@ -1,8 +1,13 @@
 import { cn } from '@/utils/cn'
-import { Play, Star } from '@phosphor-icons/react'
+import { Star } from '@phosphor-icons/react'
 import Balancer from 'react-wrap-balancer'
 
-interface HeroBannerMaskProps {}
+import { Movie } from '@/types/movie'
+
+type HeroBannerMaskProps = Pick<
+  Movie,
+  'title' | 'id' | 'overview' | 'vote_average' | 'vote_count'
+>
 
 export function HeroBannerMask(props: HeroBannerMaskProps) {
   return (
@@ -17,46 +22,37 @@ export function HeroBannerMask(props: HeroBannerMaskProps) {
             'xl:text-6xl',
           )}
         >
-          <Balancer>Mad Max: Estrada da Fúria</Balancer>
+          <Balancer>{props.title}</Balancer>
         </h1>
 
         <div className="flex items-center gap-1">
-          <Star size={26} weight="fill" className="fill fill-yellow-400" />
-          <span className="pt-1 text-lg font-medium">8.2 | 3478</span>
+          <Star size={26} weight="fill" className="fill fill-red-700" />
+          <span className="pt-1 text-lg font-medium">
+            {props.vote_average} | {props.vote_count}
+          </span>
         </div>
 
         <p
           className={cn(
-            'mt-2 max-w-[75%] text-lg text-zinc-400',
+            'mt-2 line-clamp-4 max-w-[75%] overflow-hidden text-ellipsis text-lg text-zinc-300',
             '2xl:max-w-[100%]',
-            'xl:text-base',
+            'leading-tight xl:text-sm',
             'md:hidden',
           )}
         >
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae provident
-          soluta veritatis sed aliquid quasi autem doloribus odio pariatur. Vitae
-          cumque dolore molestiae iusto facere omnis voluptates eaque a voluptatibus?
+          {props.overview}
         </p>
-
-        <div className="flex items-center gap-1">
-          <span className="font-bold text-zinc-400">2h35</span>
-          <span className="font-bold text-zinc-400">•</span>
-          <span className="font-bold text-zinc-400">Ação, Aventura, Drama</span>
-          <span className="font-bold text-zinc-400">•</span>
-          <span className="font-bold text-zinc-400">2021</span>
-        </div>
 
         <button
           className={cn(
-            'mt-6 flex items-center justify-center gap-3 self-start rounded-full bg-violet-800 px-10 py-5',
+            'mt-6 flex items-center justify-center gap-3 self-start rounded bg-violet-800 px-7 py-2',
             'outline-2 outline-offset-2 outline-violet-800 focus-within:outline',
             'transition-colors hover:bg-violet-700',
             'active:scale-95',
             'xl:px-7 xl:py-3',
           )}
         >
-          <Play size={34} weight="fill" />
-          <span className="text-2xl font-bold">Assistir</span>
+          <span className="text-lg font-bold">Ver mais</span>
         </button>
       </div>
     </div>

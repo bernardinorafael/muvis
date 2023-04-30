@@ -86,7 +86,7 @@ export function SheetMoviePreview({ movieId, children }: SheetMoviePreviewProps)
               </h1>
 
               <div className="group flex w-full items-center justify-start gap-1">
-                <Star size={24} weight="fill" className="fill fill-yellow-400" />
+                <Star size={24} weight="fill" className="fill fill-red-700" />
                 <span className="pt-1 text-lg font-medium text-zinc-300">
                   {movie.data?.vote_average} | {movie.data?.vote_count}
                 </span>

@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ::-webkit-scrollbar {
-  display: none;
-} */
+::-webkit-scrollbar {
+  @apply w-2 bg-zinc-900;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply rounded bg-zinc-700;
+}
