@@ -43,8 +43,10 @@ export function DropdownMenuHeader(props: DropdownMenuHeaderProps) {
           className={cn(
             'z-20 w-full rounded border border-zinc-800 bg-zinc-900 p-2 shadow-4xl',
             'data-[side=bottom]:animate-slide-down-fade',
+            'max-h-select-viewport overflow-auto',
           )}
           align="end"
+          sideOffset={-5}
         >
           {categories?.map(({ name, id }) => {
             return (

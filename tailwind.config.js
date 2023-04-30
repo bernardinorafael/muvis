@@ -45,6 +45,10 @@ module.exports = {
       },
     },
 
+    maxHeight: {
+      'select-viewport': 'var(--radix-dropdown-menu-content-available-height);',
+    },
+
     screens: {
       '2xl': { max: '1535px' },
       xl: { max: '1200px' },

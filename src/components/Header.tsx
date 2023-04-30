@@ -16,10 +16,20 @@ export function Header() {
     <header
       className={cn(
         'shadow-2xl flex h-16 w-full items-center border-b border-zinc-800 bg-zinc-900',
-        { 'sticky top-0 z-20 animate-shown-header shadow-4xl': isHeaderShown },
+        {
+          'sticky right-0 top-4 z-20 animate-shown-header border-transparent bg-transparent':
+            isHeaderShown,
+        },
       )}
     >
-      <div className="mx-auto flex h-full w-full max-w-[1100px] items-center justify-between px-4">
+      <div
+        className={cn(
+          'mx-auto flex h-full w-full max-w-[1100px] items-center justify-between px-4',
+          {
+            'rounded-full bg-zinc-800/50 shadow-4xl backdrop-blur-md': isHeaderShown,
+          },
+        )}
+      >
         <Link className="active:scale-[0.95]" href="/">
           <Popcorn className="fill-zinc-400" size={38} weight="fill" />
         </Link>
