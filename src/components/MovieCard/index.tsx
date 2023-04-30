@@ -7,11 +7,17 @@ interface MovieCardProps {
 
 export function MovieCard(props: MovieCardProps) {
   return (
-    <div className={cn('group relative h-[490px] bg-opacity-40 shadow-4xl')}>
+    <div
+      className={cn(
+        'group relative h-[550px] bg-opacity-40 shadow-4xl',
+        'xl:h-[430px]',
+        'lg:h-[290px]',
+        'sm:h-[430px]',
+      )}
+    >
       <Image
         className={cn(
-          'cursor-pointer rounded-lg object-cover object-top opacity-60',
-          'transition-transform group-hover:z-10 group-hover:scale-110 group-hover:shadow-5xl',
+          'rounded-lg object-cover object-top opacity-60',
           'transition-all duration-300 hover:opacity-100',
         )}
         priority

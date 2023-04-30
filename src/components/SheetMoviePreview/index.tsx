@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { cn } from '@/utils/cn'
-import { FilmStrip, SpinnerGap, Star } from '@phosphor-icons/react'
+import { ArrowRight, SpinnerGap, Star } from '@phosphor-icons/react'
 import * as DialogComponent from '@radix-ui/react-dialog'
 import { useQuery } from '@tanstack/react-query'
 import dayjs from 'dayjs'
@@ -21,19 +21,27 @@ interface SheetMoviePreviewProps {
 }
 
 export function SheetMoviePreview({ movieId, children }: SheetMoviePreviewProps) {
-  const movie = useQuery(['movie', movieId], async (): Promise<MovieDetailed> => {
-    const response = await api.get(`/movie/${movieId}`, {
-      params: { language: 'pt-BR' },
-    })
-    return response.data
-  })
+  const movie = useQuery(
+    ['movie', movieId],
+    async (): Promise<MovieDetailed> => {
+      const response = await api.get(`/movie/${movieId}`, {
+        params: { language: 'pt-BR' },
+      })
+      return response.data
+    },
+    { staleTime: 60 * 60 * 24 }, // 1day
+  )
 
-  const { data: cast } = useQuery(['cast', movieId], async (): Promise<Cast[]> => {
-    const response = await api.get(`/movie/${movieId}/credits`, {
-      params: { language: 'pt-BR' },
-    })
-    return response.data.cast.slice(0, 8)
-  })
+  const cast = useQuery(
+    ['cast', movieId],
+    async (): Promise<Cast[]> => {
+      const response = await api.get(`/movie/${movieId}/credits`, {
+        params: { language: 'pt-BR' },
+      })
+      return response.data.cast.slice(0, 8)
+    },
+    { staleTime: 60 * 60 * 24 }, // 1day
+  )
 
   const formatDate = (date: string) => dayjs(date).format('DD[ de ]MMMM[ de ]YYYY')
 
@@ -93,7 +101,7 @@ export function SheetMoviePreview({ movieId, children }: SheetMoviePreviewProps)
               </div>
             </div>
 
-            <p className="mt-2 text-sm font-medium leading-relaxed text-zinc-500">
+            <p className="line-clamp-3 overflow-hidden text-ellipsis text-sm font-medium leading-relaxed text-zinc-500">
               {movie.data?.overview}
             </p>
 
@@ -112,19 +120,19 @@ export function SheetMoviePreview({ movieId, children }: SheetMoviePreviewProps)
 
             <button
               className={cn(
-                'mt-6 flex items-center justify-center gap-3 self-start rounded bg-violet-800 px-4 py-2 text-zinc-300',
+                'mt-6 flex items-center justify-center gap-1 self-start rounded bg-violet-800 px-4 py-2 text-zinc-300',
                 'outline-2 outline-offset-2 outline-violet-800 focus-within:outline',
                 'transition-colors hover:bg-violet-700',
                 'active:scale-95',
                 'xl:px-7 xl:py-3',
               )}
             >
-              <FilmStrip size={22} weight="fill" />
-              <span className="text-lg font-bold">Ver trailer</span>
+              <span className="text-lg font-bold">Ver mais</span>
+              <ArrowRight size={22} weight="fill" />
             </button>
 
             <div className="mt-8 grid grid-cols-3 gap-3">
-              {cast?.map((actor) => {
+              {cast.data?.map((actor) => {
                 return (
                   <div className="flex gap-2" key={actor.id}>
                     {actor.profile_path ? (

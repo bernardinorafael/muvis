@@ -31,7 +31,6 @@ export function Hero() {
             />
 
             <HeroBannerMask />
-
             <ImageOverlay />
           </div>
         )
