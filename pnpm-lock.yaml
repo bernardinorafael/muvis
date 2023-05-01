@@ -21,6 +21,7 @@ specifiers:
   eslint: 8.39.0
   eslint-config-next: 13.3.1
   keen-slider: 6.8.5
+  lucide-react: 0.190.0
   next: 13.3.1
   postcss: 8.4.23
   prettier: 2.8.8
@@ -47,6 +48,7 @@ dependencies:
   clsx: 1.2.1
   dayjs: 1.11.7
   keen-slider: 6.8.5
+  lucide-react: 0.190.0_react@18.2.0
   next: 13.3.1_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -2880,6 +2882,14 @@ packages:
     dependencies:
       yallist: 4.0.0
     dev: true
+
+  /lucide-react/0.190.0_react@18.2.0:
+    resolution: {integrity: sha512-a3usWP+PuTBOL2Py8jduu1CnHm6eF2FJWt4gLqsu3/tDgJKnQ/Q/3iaNveqPXUYVg9Akn8Gp14ydPf23QaOqhw==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /merge2/1.4.1:
     resolution: {integrity: sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==}

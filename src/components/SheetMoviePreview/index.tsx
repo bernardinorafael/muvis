@@ -1,10 +1,10 @@
 import React from 'react'
 import Image from 'next/image'
 import { cn } from '@/utils/cn'
-import { ArrowRight, Star } from '@phosphor-icons/react'
 import * as DialogComponent from '@radix-ui/react-dialog'
 import { useQuery } from '@tanstack/react-query'
 import dayjs from 'dayjs'
+import { ArrowRight, Star } from 'lucide-react'
 import Balancer from 'react-wrap-balancer'
 
 import { Cast } from '@/types/cast'
@@ -80,7 +80,11 @@ export function SheetMoviePreview({ movieId, children }: SheetMoviePreviewProps)
               </h1>
 
               <div className="group flex w-full items-center justify-start gap-1">
-                <Star size={24} weight="fill" className="fill fill-red-700" />
+                <Star
+                  size={24}
+                  strokeWidth={1.5}
+                  className="fill fill-red-700 stroke-red-700"
+                />
                 <span className="pt-1 text-lg font-medium text-zinc-300">
                   {movie.data?.vote_average} | {movie.data?.vote_count}
                 </span>
@@ -120,7 +124,7 @@ export function SheetMoviePreview({ movieId, children }: SheetMoviePreviewProps)
                 )}
               >
                 <span className="text-lg font-bold">Ver mais</span>
-                <ArrowRight size={22} weight="fill" />
+                <ArrowRight size={22} />
               </button>
 
               <div className="mt-8 grid grid-cols-3 gap-3">

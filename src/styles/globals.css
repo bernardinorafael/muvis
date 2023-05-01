@@ -3,14 +3,9 @@
 @tailwind utilities;
 
 ::-webkit-scrollbar {
-  @apply w-2 bg-zinc-900;
+  @apply w-[5px] bg-zinc-900;
 }
 
 ::-webkit-scrollbar-thumb {
   @apply rounded bg-zinc-700;
-}
-
-.menu-dropdown-content {
-  width: var(--radix-dropdown-menu-trigger-width);
-  max-height: var(--radix-dropdown-menu-content-available-height);
 }

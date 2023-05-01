@@ -6,7 +6,7 @@ export function useHeaderSticky() {
 
   React.useEffect(() => {
     function onChangeScrollPage() {
-      if (scrollY > 64) {
+      if (scrollY > 84) {
         setIsHeaderShown(true)
       } else {
         setIsHeaderShown(false)

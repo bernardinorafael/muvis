@@ -82,7 +82,7 @@ export default function Home(props: HomeProps) {
               <div className={cn('grid h-full grid-cols-1', 'keen-slider__slide')}>
                 <SheetMoviePreview movieId={movie.id}>
                   <MovieCard
-                    key={i}
+                    key={movie.id}
                     image={`https://image.tmdb.org/t/p/w780/${movie.poster_path}`}
                   />
                 </SheetMoviePreview>
@@ -96,12 +96,12 @@ export default function Home(props: HomeProps) {
         <HeaderCarouselMovies description="Horror" href="/" />
 
         <CarouselCardMovies>
-          {props.horrorMovies.map((movie, i) => {
+          {props.horrorMovies.map((movie) => {
             return (
               <div className={cn('grid h-full grid-cols-1', 'keen-slider__slide')}>
                 <SheetMoviePreview movieId={movie.id}>
                   <MovieCard
-                    key={i}
+                    key={movie.id}
                     image={`https://image.tmdb.org/t/p/w780/${movie.poster_path}`}
                   />
                 </SheetMoviePreview>
@@ -120,7 +120,7 @@ export default function Home(props: HomeProps) {
               <div className={cn('grid h-full grid-cols-1', 'keen-slider__slide')}>
                 <SheetMoviePreview movieId={movie.id}>
                   <MovieCard
-                    key={i}
+                    key={movie.id}
                     image={`https://image.tmdb.org/t/p/w780/${movie.poster_path}`}
                   />
                 </SheetMoviePreview>
@@ -139,7 +139,7 @@ export default function Home(props: HomeProps) {
               <div className={cn('grid h-full grid-cols-1', 'keen-slider__slide')}>
                 <SheetMoviePreview movieId={movie.id}>
                   <MovieCard
-                    key={i}
+                    key={movie.id}
                     image={`https://image.tmdb.org/t/p/w780/${movie.poster_path}`}
                   />
                 </SheetMoviePreview>

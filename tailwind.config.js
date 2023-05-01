@@ -39,14 +39,6 @@ module.exports = {
 
         'shown-header': 'shown-header 400ms ease-in-out',
       },
-
-      lineHeight: {
-        'extra-none': 0,
-      },
-    },
-
-    maxHeight: {
-      'select-viewport': 'var(--radix-dropdown-menu-content-available-height);',
     },
 
     screens: {

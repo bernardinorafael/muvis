@@ -1,8 +1,8 @@
-import React from 'react'
 import Link from 'next/link'
 import { useHeaderSticky } from '@/hook/use-header-sticky'
 import { cn } from '@/utils/cn'
-import { CaretDown, Popcorn } from '@phosphor-icons/react'
+import { Popcorn } from '@phosphor-icons/react'
+import { ChevronDown } from 'lucide-react'
 
 import { DropdownMenuHeader } from './DropdownMenuHeader'
 import { LoginDialogButton } from './LoginDialog/LoginDialogButton'
@@ -14,47 +14,45 @@ export function Header() {
 
   return (
     <header
-      className={cn(
-        'shadow-2xl flex h-16 w-full items-center border-b border-zinc-800 bg-zinc-900',
-        {
-          'sticky right-0 top-4 z-20 animate-shown-header border-transparent bg-transparent':
-            isHeaderShown,
-        },
-      )}
+      className={cn('absolute top-4 z-50 flex h-16 w-full items-center', {
+        'sticky animate-shown-header': isHeaderShown,
+      })}
     >
-      <div
-        className={cn(
-          'mx-auto flex h-full w-full max-w-[1100px] items-center justify-between px-4',
-          {
-            'rounded-full bg-zinc-800/50 shadow-4xl backdrop-blur-md': isHeaderShown,
-          },
-        )}
-      >
-        <Link className="active:scale-[0.95]" href="/">
-          <Popcorn className="fill-zinc-400" size={38} weight="fill" />
-        </Link>
+      <div className="mx-auto flex h-full w-full max-w-[1100px] items-center justify-between rounded-full bg-zinc-800/50 px-4 shadow-4xl backdrop-blur-md">
+        <div className={cn('flex items-center gap-6')}>
+          <Link className="active:scale-[0.95]" href="/">
+            <Popcorn className="fill-zinc-400" size={38} weight="fill" />
+          </Link>
+
+          <button
+            className={cn(
+              'flex select-none items-center justify-center gap-2 rounded px-2 text-sm font-semibold text-zinc-300',
+              'underline-offset-4 hover:underline',
+              'outline-2 outline-offset-2 outline-violet-900 focus-within:outline',
+            )}
+          >
+            Descobrir
+          </button>
+
+          <DropdownMenuHeader>
+            <button
+              className={cn(
+                'flex select-none items-center justify-center gap-2 rounded px-2 text-sm font-semibold text-zinc-300',
+                'underline-offset-4 hover:underline',
+                'outline-2 outline-offset-2 outline-violet-900 focus-within:outline',
+              )}
+            >
+              Categorias
+              <ChevronDown size={18} />
+            </button>
+          </DropdownMenuHeader>
+        </div>
 
         <SearchBox />
 
-        <div className={cn('flex items-center gap-6')}>
-          <nav className={cn('flex items-center gap-4')}>
-            <DropdownMenuHeader>
-              <button
-                className={cn(
-                  'flex select-none items-center justify-center gap-2 rounded p-3 text-sm font-semibold text-zinc-400',
-                  'transition-colors hover:bg-zinc-800 hover:text-zinc-200',
-                )}
-              >
-                Categorias
-                <CaretDown size={18} />
-              </button>
-            </DropdownMenuHeader>
-          </nav>
-
-          <LoginDialogContent>
-            <LoginDialogButton />
-          </LoginDialogContent>
-        </div>
+        <LoginDialogContent>
+          <LoginDialogButton />
+        </LoginDialogContent>
       </div>
     </header>
   )

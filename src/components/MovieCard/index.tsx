@@ -5,11 +5,11 @@ interface MovieCardProps {
   image: string
 }
 
-export function MovieCard(props: MovieCardProps) {
+export function MovieCard({ image }: MovieCardProps) {
   return (
     <div
       className={cn(
-        'group relative h-[550px] bg-opacity-40 shadow-4xl',
+        'group relative h-[520px] bg-opacity-40 shadow-4xl',
         'xl:h-[430px]',
         'lg:h-[290px]',
         'sm:h-[430px]',
@@ -20,10 +20,10 @@ export function MovieCard(props: MovieCardProps) {
           'rounded-lg object-cover object-top opacity-60',
           'transition-all duration-300 hover:opacity-100',
         )}
-        priority
         fill
+        priority
         quality={100}
-        src={props.image}
+        src={image}
         alt=""
       />
     </div>

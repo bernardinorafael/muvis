@@ -1,5 +1,5 @@
 import { cn } from '@/utils/cn'
-import { Star } from '@phosphor-icons/react'
+import { Star } from 'lucide-react'
 import Balancer from 'react-wrap-balancer'
 
 import { Movie } from '@/types/movie'
@@ -26,7 +26,12 @@ export function HeroBannerMask(props: HeroBannerMaskProps) {
         </h1>
 
         <div className="flex items-center gap-1">
-          <Star size={26} weight="fill" className="fill fill-red-700" />
+          <Star
+            size={24}
+            strokeWidth={1.5}
+            className="fill fill-red-700 stroke-red-700"
+          />
+
           <span className="pt-1 text-lg font-medium">
             {props.vote_average} | {props.vote_count}
           </span>
