@@ -27,7 +27,7 @@ interface DiscoverProps {
 
 export default function Discover(props: DiscoverProps) {
   const router = useRouter()
-  const genreId = String(router.query.genreId)
+  const genreId = String(router.query.genre)
 
   const movies = useQuery(
     ['movies-discover', genreId],

@@ -21,7 +21,9 @@ export function DropdownMenuHeader(props: DropdownMenuHeaderProps) {
   const handleRedirectDiscover = async (genreId: number) => {
     await router.push({
       pathname: '/discover',
-      query: { genreId },
+      query: {
+        genre: genreId,
+      },
     })
   }
 
