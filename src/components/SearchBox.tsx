@@ -27,6 +27,8 @@ export function SearchBox() {
     })
 
     reset()
+
+    
   }
 
   return (

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { useHeaderSticky } from '@/hook/use-header-sticky'
 import { cn } from '@/utils/cn'
 import { Popcorn } from '@phosphor-icons/react'
@@ -11,6 +12,8 @@ import { SearchBox } from './SearchBox'
 
 export function Header() {
   const { isHeaderShown } = useHeaderSticky()
+
+  const router = useRouter()
 
   return (
     <header
@@ -28,8 +31,8 @@ export function Header() {
             className={cn(
               'flex select-none items-center justify-center gap-2 rounded px-2 text-sm font-semibold text-zinc-300',
               'underline-offset-4 hover:underline',
-              'outline-2 outline-offset-2 outline-violet-900 focus-within:outline',
             )}
+            onClick={() => router.push('/discover')}
           >
             Descobrir
           </button>
@@ -39,7 +42,6 @@ export function Header() {
               className={cn(
                 'flex select-none items-center justify-center gap-2 rounded px-2 text-sm font-semibold text-zinc-300',
                 'underline-offset-4 hover:underline',
-                'outline-2 outline-offset-2 outline-violet-900 focus-within:outline',
               )}
             >
               Categorias

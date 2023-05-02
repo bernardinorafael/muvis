@@ -6,8 +6,8 @@ import { Movie } from '@/types/movie'
 import { api } from '@/lib/axios'
 import { CarouselCardMovies } from '@/components/CarouselCardMovies'
 import { HeaderCarouselMovies } from '@/components/HeaderCarouselMovies'
-import { Hero } from '@/components/Hero'
 import { MovieCard } from '@/components/MovieCard'
+import { MovieMainBanner } from '@/components/MovieMainBanner'
 import { SheetMoviePreview } from '@/components/SheetMoviePreview'
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -71,7 +71,7 @@ export default function Home(props: HomeProps) {
         <title>Home | Muvis</title>
       </Head>
 
-      <Hero movie={props.discoverMoviesHero} />
+      <MovieMainBanner movie={props.discoverMoviesHero} />
 
       <section className="flex flex-col gap-10 py-5 pl-10">
         <HeaderCarouselMovies description="Em cartaz no cinema" href="/" />

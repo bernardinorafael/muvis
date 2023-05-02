@@ -10,7 +10,7 @@ interface HeroProps {
   movie: Movie
 }
 
-export function Hero({ movie }: HeroProps) {
+export function MovieMainBanner({ movie }: HeroProps) {
   return (
     <div
       className={cn('relative z-10 h-[740px] w-full select-none', '2xl:h-[480px]')}

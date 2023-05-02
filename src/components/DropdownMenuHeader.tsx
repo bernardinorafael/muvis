@@ -1,4 +1,5 @@
 import { ReactNode } from 'react'
+import { useRouter } from 'next/router'
 import { cn } from '@/utils/cn'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import { useQuery } from '@tanstack/react-query'
@@ -15,7 +16,16 @@ interface Category {
 }
 
 export function DropdownMenuHeader(props: DropdownMenuHeaderProps) {
-  const { data: categories } = useQuery(
+  const router = useRouter()
+
+  const handleRedirectDiscover = async (genreId: number) => {
+    await router.push({
+      pathname: '/discover',
+      query: { genreId },
+    })
+  }
+
+  const category = useQuery(
     ['movie-categories'],
     async (): Promise<Category[]> => {
       const response = await api.get('/genre/movie/list', {
@@ -28,10 +38,7 @@ export function DropdownMenuHeader(props: DropdownMenuHeaderProps) {
 
   return (
     <DropdownMenu.Root>
-      <DropdownMenu.Trigger
-        className="outline-2 outline-offset-2 outline-zinc-950 focus-within:outline"
-        asChild
-      >
+      <DropdownMenu.Trigger className="focus:outline-none" asChild>
         {props.children}
       </DropdownMenu.Trigger>
 
@@ -45,7 +52,7 @@ export function DropdownMenuHeader(props: DropdownMenuHeaderProps) {
           align="start"
           sideOffset={5}
         >
-          {categories?.map(({ name, id }) => {
+          {category.data?.map((movie) => {
             return (
               <DropdownMenu.Item
                 className={cn(
@@ -54,9 +61,10 @@ export function DropdownMenuHeader(props: DropdownMenuHeaderProps) {
                   'active:scale-[0.97]',
                   'focus:outline-none',
                 )}
-                key={id}
+                key={movie.id}
+                onClick={() => handleRedirectDiscover(movie.id)}
               >
-                {name}
+                {movie.name}
               </DropdownMenu.Item>
             )
           })}
