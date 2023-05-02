@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import Router from 'next/router'
 import { cn } from '@/utils/cn'
 import * as DialogComponent from '@radix-ui/react-dialog'
 import { useQuery } from '@tanstack/react-query'
@@ -122,6 +123,7 @@ export function SheetMoviePreview({ movieId, children }: SheetMoviePreviewProps)
                   'active:scale-95',
                   'xl:px-7 xl:py-3',
                 )}
+                onClick={() => Router.push(`/movie/${movieId}`)}
               >
                 <span className="text-lg font-bold">Ver mais</span>
                 <ArrowRight size={22} />

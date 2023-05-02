@@ -4,7 +4,6 @@ import { useRouter } from 'next/router'
 import { GetServerSideProps } from 'next/types'
 import { cn } from '@/utils/cn'
 import { useQuery } from '@tanstack/react-query'
-import { Loader } from 'lucide-react'
 
 import { Movie } from '@/types/movie'
 import { api } from '@/lib/axios'
@@ -50,10 +49,8 @@ export default function Discover(props: DiscoverProps) {
       <section className="flex w-full flex-col gap-8 px-16 pb-16">
         <div className="grid grid-cols-5 gap-5">
           {movies.data?.map((movie) => {
-            return movies.isLoading || movies.isFetching ? (
-              <div className="flex h-[500px] items-center justify-center">
-                <Loader className="animate-spin" />
-              </div>
+            return movies.isFetching || movies.isLoading ? (
+              <div className="flex h-[500px] animate-pulse items-center justify-center rounded bg-zinc-800 duration-500" />
             ) : (
               <SheetMoviePreview movieId={movie.id}>
                 <div className="group relative h-[500px] bg-opacity-40 shadow-4xl">
