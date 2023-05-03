@@ -32,6 +32,7 @@ export function MovieMainBanner({ movie }: HeroProps) {
           vote_average={movie.vote_average}
           vote_count={movie.vote_count}
         />
+
         <ImageOverlay />
       </div>
     </div>

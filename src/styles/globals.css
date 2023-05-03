@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  @apply scroll-smooth;
+}
+
 ::-webkit-scrollbar {
   @apply w-[5px] bg-zinc-900;
 }

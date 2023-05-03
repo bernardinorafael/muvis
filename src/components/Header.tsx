@@ -1,6 +1,5 @@
 import Link from 'next/link'
-import { useRouter } from 'next/router'
-import { useHeaderSticky } from '@/hook/use-header-sticky'
+import Router from 'next/router'
 import { cn } from '@/utils/cn'
 import { Popcorn } from '@phosphor-icons/react'
 import { ChevronDown } from 'lucide-react'
@@ -11,16 +10,8 @@ import { LoginDialogContent } from './LoginDialog/LoginDialogContent'
 import { SearchBox } from './SearchBox'
 
 export function Header() {
-  const { isHeaderShown } = useHeaderSticky()
-
-  const router = useRouter()
-
   return (
-    <header
-      className={cn('absolute top-4 z-50 flex h-16 w-full items-center', {
-        'sticky animate-shown-header': isHeaderShown,
-      })}
-    >
+    <header className={cn('absolute top-4 z-50 flex h-16 w-full items-center', {})}>
       <div className="mx-auto flex h-full w-full max-w-[1100px] items-center justify-between rounded-full bg-zinc-800/50 px-4 shadow-4xl backdrop-blur-md">
         <div className={cn('flex items-center gap-6')}>
           <Link className="active:scale-[0.95]" href="/">
@@ -32,7 +23,7 @@ export function Header() {
               'flex select-none items-center justify-center gap-2 rounded px-2 text-sm font-semibold text-zinc-300',
               'underline-offset-4 hover:underline',
             )}
-            onClick={() => router.push('/discover')}
+            onClick={() => Router.push('/discover')}
           >
             Descobrir
           </button>
