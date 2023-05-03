@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import { cn } from '@/utils/cn'
 import { Star } from 'lucide-react'
 import Balancer from 'react-wrap-balancer'
@@ -10,6 +11,8 @@ type HeroBannerMaskProps = Pick<
 >
 
 export function HeroBannerMask(props: HeroBannerMaskProps) {
+  const router = useRouter()
+
   return (
     <div className="absolute z-50 flex h-full w-full flex-col justify-center p-10">
       <div
@@ -56,6 +59,7 @@ export function HeroBannerMask(props: HeroBannerMaskProps) {
             'active:scale-95',
             'xl:px-7 xl:py-3',
           )}
+          onClick={() => router.push(`/movie/${props.id}`)}
         >
           <span className="text-lg font-bold">Ver mais</span>
         </button>

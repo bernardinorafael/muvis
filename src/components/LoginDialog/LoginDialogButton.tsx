@@ -1,5 +1,4 @@
 import { ButtonHTMLAttributes } from 'react'
-import { cn } from '@/utils/cn'
 import { User } from 'lucide-react'
 
 type SearchButtonProps = ButtonHTMLAttributes<HTMLButtonElement>
@@ -7,11 +6,8 @@ type SearchButtonProps = ButtonHTMLAttributes<HTMLButtonElement>
 export function LoginDialogButton(props: SearchButtonProps) {
   return (
     <button
+      className="flex items-center justify-center gap-2 rounded-full p-1 text-sm text-zinc-400"
       {...props}
-      className={cn(
-        'flex items-center justify-center gap-2 rounded-full p-1 text-sm text-zinc-400',
-        'outline-2 outline-offset-2 outline-zinc-950 focus-within:outline',
-      )}
     >
       <User className="fill-zinc-400" size={32} strokeWidth={1} />
 

@@ -74,7 +74,7 @@ export default function Home(props: HomeProps) {
       <MovieMainBanner movie={props.discoverMoviesHero} />
 
       <section className="flex flex-col gap-10 py-5 pl-10">
-        <HeaderCarouselMovies description="Em cartaz no cinema" href="/" />
+        <HeaderCarouselMovies description="Em cartaz no cinema" />
 
         <CarouselCardMovies>
           {props.nowPlayingMovies.map((movie, i) => {
@@ -93,7 +93,7 @@ export default function Home(props: HomeProps) {
       </section>
 
       <section className="flex flex-col gap-10 py-5 pl-10">
-        <HeaderCarouselMovies description="Horror" href="/" />
+        <HeaderCarouselMovies description="Horror" />
 
         <CarouselCardMovies>
           {props.horrorMovies.map((movie) => {
@@ -112,10 +112,10 @@ export default function Home(props: HomeProps) {
       </section>
 
       <section className="flex flex-col gap-10 py-5 pl-10">
-        <HeaderCarouselMovies description="Crimes" href="/" />
+        <HeaderCarouselMovies description="Crimes" />
 
         <CarouselCardMovies>
-          {props.crimeMovies.map((movie, i) => {
+          {props.crimeMovies.map((movie) => {
             return (
               <div className={cn('grid h-full grid-cols-1', 'keen-slider__slide')}>
                 <SheetMoviePreview movieId={movie.id}>
@@ -131,10 +131,10 @@ export default function Home(props: HomeProps) {
       </section>
 
       <section className="flex flex-col gap-10 py-5 pl-10">
-        <HeaderCarouselMovies description="Para as crianças" href="/" />
+        <HeaderCarouselMovies description="Para as crianças" />
 
         <CarouselCardMovies>
-          {props.animationMovies.map((movie, i) => {
+          {props.animationMovies.map((movie) => {
             return (
               <div className={cn('grid h-full grid-cols-1', 'keen-slider__slide')}>
                 <SheetMoviePreview movieId={movie.id}>

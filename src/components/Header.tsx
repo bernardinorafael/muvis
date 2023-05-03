@@ -15,7 +15,7 @@ export function Header() {
       <div className="mx-auto flex h-full w-full max-w-[1100px] items-center justify-between rounded-full bg-zinc-800/50 px-4 shadow-4xl backdrop-blur-md">
         <div className={cn('flex items-center gap-6')}>
           <Link className="active:scale-[0.95]" href="/">
-            <Popcorn className="fill-zinc-400" size={38} weight="fill" />
+            <Popcorn className="fill-zinc-100" size={38} weight="fill" />
           </Link>
 
           <button

@@ -17,12 +17,12 @@ export function MovieMainBanner({ movie }: HeroProps) {
     >
       <div className="keen-slider__slide">
         <Image
-          fill
-          priority
-          quality={100}
-          alt={movie.title}
-          src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
           className={cn('z-10 object-cover object-top')}
+          src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+          priority
+          alt={movie.title}
+          quality={100}
+          fill
         />
 
         <HeroBannerMask

@@ -4,7 +4,6 @@ import { ArrowRight } from '@phosphor-icons/react'
 
 interface HeaderCarouselMoviesProps {
   description: string
-  href?: string
 }
 
 export function HeaderCarouselMovies(props: HeaderCarouselMoviesProps) {
@@ -20,7 +19,7 @@ export function HeaderCarouselMovies(props: HeaderCarouselMoviesProps) {
           'hover:text-violet-700 hover:transition-colors',
           'pt-0 md:text-base',
         )}
-        href={props.href!}
+        href="/discover"
       >
         Ver mais
         <ArrowRight />
