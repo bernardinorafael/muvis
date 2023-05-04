@@ -5,16 +5,17 @@ import { cn } from '@/utils/cn'
 import * as DialogComponent from '@radix-ui/react-dialog'
 import { useQuery } from '@tanstack/react-query'
 import dayjs from 'dayjs'
-import { ArrowRight, Star } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import Balancer from 'react-wrap-balancer'
 
-import { Cast } from '@/types/cast'
+import { Cast as CastType } from '@/types/cast'
 import { MovieDetailed } from '@/types/movie-detailed'
 import { api } from '@/lib/axios'
 
+import { Cast } from '../Cast'
 import { ImageOverlay } from '../ImageOverlay'
 import { CloseDialogButton } from '../LoginDialog/CloseDialogButton'
-import { FallbackCast } from './components/FallbackCast'
+import { RatedMovie } from '../RatedMovie'
 
 interface SheetMoviePreviewProps {
   children: React.ReactNode
@@ -30,18 +31,16 @@ export function SheetMoviePreview({ movieId, children }: SheetMoviePreviewProps)
       })
       return response.data
     },
-    { staleTime: 60 * 60 * 24 }, // 1day
+    { staleTime: 60 * 60 * 24 }, // 1 day
   )
 
   const cast = useQuery(
     ['cast', movieId],
-    async (): Promise<Cast[]> => {
-      const response = await api.get(`/movie/${movieId}/credits`, {
-        params: { language: 'pt-BR' },
-      })
+    async (): Promise<CastType[]> => {
+      const response = await api.get(`/movie/${movieId}/credits`)
       return response.data.cast.slice(0, 8)
     },
-    { staleTime: 60 * 60 * 24 }, // 1day
+    { staleTime: 60 * 60 * 24 }, // 1 day
   )
 
   const formatDate = (date: string) => dayjs(date).format('DD[ de ]MMMM[ de ]YYYY')
@@ -81,14 +80,10 @@ export function SheetMoviePreview({ movieId, children }: SheetMoviePreviewProps)
               </h1>
 
               <div className="group flex w-full items-center justify-start gap-1">
-                <Star
-                  size={24}
-                  strokeWidth={1.5}
-                  className="fill fill-red-700 stroke-red-700"
+                <RatedMovie
+                  vote_average={movie.data?.vote_average!}
+                  vote_count={movie.data?.vote_count!}
                 />
-                <span className="pt-1 text-lg font-medium text-zinc-300">
-                  {movie.data?.vote_average} | {movie.data?.vote_count}
-                </span>
 
                 <div className="ml-auto flex flex-col text-right leading-none">
                   <strong className="font-medium text-zinc-300">Lançamento</strong>
@@ -132,29 +127,12 @@ export function SheetMoviePreview({ movieId, children }: SheetMoviePreviewProps)
               <div className="mt-8 grid grid-cols-3 gap-3">
                 {cast.data?.map((actor) => {
                   return (
-                    <div className="flex gap-2" key={actor.id}>
-                      {actor.profile_path ? (
-                        <Image
-                          className="rounded"
-                          height={38}
-                          width={38}
-                          src={`https://image.tmdb.org/t/p/w185/${actor.profile_path}`}
-                          alt={actor.name}
-                        />
-                      ) : (
-                        <FallbackCast />
-                      )}
-
-                      <div className="flex flex-col">
-                        <strong className="text-sm font-extrabold text-zinc-300">
-                          {actor.name}
-                        </strong>
-
-                        <span className="text-xs text-zinc-400">
-                          {actor.character}
-                        </span>
-                      </div>
-                    </div>
+                    <Cast
+                      key={actor.id}
+                      character={actor.character}
+                      name={actor.name}
+                      profile_path={actor.profile_path}
+                    />
                   )
                 })}
               </div>

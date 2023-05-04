@@ -1,9 +1,10 @@
 import { useRouter } from 'next/router'
 import { cn } from '@/utils/cn'
-import { Star } from 'lucide-react'
 import Balancer from 'react-wrap-balancer'
 
 import { Movie } from '@/types/movie'
+
+import { RatedMovie } from './RatedMovie'
 
 type HeroBannerMaskProps = Pick<
   Movie,
@@ -28,17 +29,10 @@ export function HeroBannerMask(props: HeroBannerMaskProps) {
           <Balancer>{props.title}</Balancer>
         </h1>
 
-        <div className="flex items-center gap-1">
-          <Star
-            size={24}
-            strokeWidth={1.5}
-            className="fill fill-red-700 stroke-red-700"
-          />
-
-          <span className="pt-1 text-lg font-medium">
-            {props.vote_average} | {props.vote_count}
-          </span>
-        </div>
+        <RatedMovie
+          vote_average={props.vote_average}
+          vote_count={props.vote_count}
+        />
 
         <p
           className={cn(
