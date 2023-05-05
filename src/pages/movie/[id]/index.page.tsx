@@ -7,9 +7,12 @@ import Balancer from 'react-wrap-balancer'
 import { Cast as CastType } from '@/types/cast'
 import { MovieDetailed } from '@/types/movie-detailed'
 import { api } from '@/lib/axios'
+import { Button } from '@/components/Button'
 import { Cast } from '@/components/Cast'
 import { ImageOverlay } from '@/components/ImageOverlay'
 import { RatedMovie } from '@/components/RatedMovie'
+
+import { GenresCompoent } from './components/GenresComponent'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -38,18 +41,13 @@ interface MovieProps {
 }
 
 export default function MoviePage({ cast, movie }: MovieProps) {
-  const currency = new Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL',
-  })
-
   return (
     <>
       <Head>
         <title>{movie.title} | Muvis</title>
       </Head>
 
-      <div className="relative h-[740px] w-full">
+      <div className="relative h-screen w-full">
         <Image
           className="object-cover object-top"
           fill
@@ -60,35 +58,29 @@ export default function MoviePage({ cast, movie }: MovieProps) {
         <ImageOverlay />
       </div>
 
-      <section className="z-40 mx-auto flex h-screen w-full max-w-6xl flex-col gap-4 px-4 py-8">
-        <div className="flex flex-col items-center gap-6">
-          <h1 className="text-center font-cursive text-8xl">
+      <section className="z-40 mx-auto flex w-full max-w-7xl flex-col gap-4 p-8">
+        <div className="flex flex-col gap-6">
+          <h1 className="font-cursive text-8xl">
             <Balancer>{movie.title}</Balancer>
           </h1>
 
-          <p className="text-lg font-medium leading-normal text-zinc-500">
-            <Balancer>{movie.overview}</Balancer>
-          </p>
+          <div className="flex w-full items-baseline justify-between">
+            <p className="text-lg font-medium leading-normal text-zinc-500">
+              <Balancer>{movie.overview}</Balancer>
+            </p>
+
+            <div className="flex flex-col gap-4">
+              <RatedMovie
+                vote_average={movie.vote_average}
+                vote_count={movie.vote_count}
+              />
+
+              <Button>Ver trailer</Button>
+            </div>
+          </div>
         </div>
 
-        <div className="flex gap-8">
-          <section className="flex flex-col">
-            <span className="text-sm text-zinc-400">Orçamento</span>
-            <strong className="text-lg text-green-800">
-              {currency.format(movie.budget)}
-            </strong>
-          </section>
-
-          <section className="flex flex-col">
-            <span className="text-sm text-zinc-400">Status</span>
-            <strong className="text-lg text-green-800">{movie.status}</strong>
-          </section>
-
-          <RatedMovie
-            vote_average={movie.vote_average}
-            vote_count={movie.vote_count}
-          />
-        </div>
+        <GenresCompoent genres={movie.genres} />
 
         <div className="mt-4 flex select-none flex-col gap-8 rounded border border-zinc-800 p-6 shadow-4xl">
           <strong className="text-2xl font-extrabold">Elenco</strong>

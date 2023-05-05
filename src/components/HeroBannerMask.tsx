@@ -1,9 +1,10 @@
-import { useRouter } from 'next/router'
+import router from 'next/router'
 import { cn } from '@/utils/cn'
 import Balancer from 'react-wrap-balancer'
 
 import { Movie } from '@/types/movie'
 
+import { Button } from './Button'
 import { RatedMovie } from './RatedMovie'
 
 type HeroBannerMaskProps = Pick<
@@ -12,8 +13,6 @@ type HeroBannerMaskProps = Pick<
 >
 
 export function HeroBannerMask(props: HeroBannerMaskProps) {
-  const router = useRouter()
-
   return (
     <div className="absolute z-50 flex h-full w-full flex-col justify-center p-10">
       <div
@@ -45,18 +44,12 @@ export function HeroBannerMask(props: HeroBannerMaskProps) {
           {props.overview}
         </p>
 
-        <button
-          className={cn(
-            'mt-6 flex items-center justify-center gap-3 self-start rounded bg-violet-800 px-7 py-2',
-            'outline-2 outline-offset-2 outline-violet-800 focus-within:outline',
-            'transition-colors hover:bg-violet-700',
-            'active:scale-95',
-            'xl:px-7 xl:py-3',
-          )}
+        <Button
+          className="mt-4 self-start"
           onClick={() => router.push(`/movie/${props.id}`)}
         >
-          <span className="text-lg font-bold">Ver mais</span>
-        </button>
+          Ver mais
+        </Button>
       </div>
     </div>
   )

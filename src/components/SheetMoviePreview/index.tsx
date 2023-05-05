@@ -12,6 +12,7 @@ import { Cast as CastType } from '@/types/cast'
 import { MovieDetailed } from '@/types/movie-detailed'
 import { api } from '@/lib/axios'
 
+import { Button } from '../Button'
 import { Cast } from '../Cast'
 import { ImageOverlay } from '../ImageOverlay'
 import { CloseDialogButton } from '../LoginDialog/CloseDialogButton'
@@ -78,7 +79,6 @@ export function SheetMoviePreview({ movieId, children }: SheetMoviePreviewProps)
               <h1 className="-mt-12 font-cursive text-7xl tracking-tight text-zinc-300">
                 <Balancer>{movie.data?.title}</Balancer>
               </h1>
-
               <div className="group flex w-full items-center justify-start gap-1">
                 <RatedMovie
                   vote_average={movie.data?.vote_average!}
@@ -92,11 +92,9 @@ export function SheetMoviePreview({ movieId, children }: SheetMoviePreviewProps)
                   </span>
                 </div>
               </div>
-
               <p className="line-clamp-3 overflow-hidden text-ellipsis text-sm font-medium leading-relaxed text-zinc-500">
                 {movie.data?.overview}
               </p>
-
               <div className="flex select-none items-center gap-1 self-start rounded bg-zinc-800 p-2">
                 {movie.data?.genres.map((genre) => {
                   return (
@@ -110,19 +108,13 @@ export function SheetMoviePreview({ movieId, children }: SheetMoviePreviewProps)
                 })}
               </div>
 
-              <button
-                className={cn(
-                  'mt-6 flex items-center justify-center gap-1 self-start rounded bg-violet-800 px-4 py-2 text-zinc-300',
-                  'outline-2 outline-offset-2 outline-violet-800 focus-within:outline',
-                  'transition-colors hover:bg-violet-700',
-                  'active:scale-95',
-                  'xl:px-7 xl:py-3',
-                )}
+              <Button
+                className="mt-4 flex items-center gap-3 self-start"
                 onClick={() => Router.push(`/movie/${movieId}`)}
               >
                 <span className="text-lg font-bold">Ver mais</span>
                 <ArrowRight size={22} />
-              </button>
+              </Button>
 
               <div className="mt-8 grid grid-cols-3 gap-3">
                 {cast.data?.map((actor) => {
