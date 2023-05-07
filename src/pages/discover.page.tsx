@@ -7,8 +7,14 @@ import { useQuery } from '@tanstack/react-query'
 
 import { Movie } from '@/types/movie'
 import { api } from '@/lib/axios'
-import { MovieMainBanner } from '@/components/MovieMainBanner'
+import { Select } from '@/components/Select'
 import { SheetMoviePreview } from '@/components/SheetMoviePreview'
+
+/**
+ * Discover API
+ *
+ * @see {@link https://developers.themoviedb.org/3/discover/movie-discover}
+ */
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const response = await api.get('/discover/movie')
@@ -31,12 +37,26 @@ export default function Discover(props: DiscoverProps) {
   const movies = useQuery(
     ['movies-discover', genreId],
     async (): Promise<Movie[]> => {
-      const response = await api.get(`/discover/movie?with_genres=${genreId}`)
+      const URL = `/discover/movie?with_genres=${genreId}`
+      const response = await api.get(URL)
 
       return response.data.results
     },
     { initialData: props.initialMovies },
   )
+
+  const RELEASE_YEARS = ['2023', '2022', '2021', '2020']
+
+  const GENRES = [
+    'Ação',
+    'Aventura',
+    'Romance',
+    'Crimes',
+    'Comédia',
+    'Ficção',
+    'Documentário',
+    'Anime',
+  ]
 
   return (
     <>
@@ -44,7 +64,12 @@ export default function Discover(props: DiscoverProps) {
         <title>Descobrir | Muvis</title>
       </Head>
 
-      <MovieMainBanner movie={movies.data[0]} />
+      <section className="mb-8 border-b border-zinc-800 px-16 py-4">
+        <div className="flex items-center gap-4">
+          <Select options={RELEASE_YEARS} placeholder="Lançamento" />
+          <Select options={GENRES} placeholder="Gênero" />
+        </div>
+      </section>
 
       <section className="flex w-full flex-col gap-8 px-16 pb-16">
         <div className="grid grid-cols-5 gap-5">

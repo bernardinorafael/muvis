@@ -1,3 +1,4 @@
+import { Bebas_Neue } from 'next/font/google'
 import router from 'next/router'
 import { cn } from '@/utils/cn'
 import Balancer from 'react-wrap-balancer'
@@ -6,6 +7,11 @@ import { Movie } from '@/types/movie'
 
 import { Button } from './Button'
 import { RatedMovie } from './RatedMovie'
+
+const bebasNeue = Bebas_Neue({
+  subsets: ['latin'],
+  weight: ['400'],
+})
 
 type HeroBannerMaskProps = Pick<
   Movie,
@@ -20,9 +26,10 @@ export function HeroBannerMask(props: HeroBannerMaskProps) {
       >
         <h1
           className={cn(
-            'font-cursive text-9xl tracking-tight text-white',
+            'text-9xl tracking-tight text-white',
             '2xl:text-7xl',
             'xl:text-6xl',
+            bebasNeue.className,
           )}
         >
           <Balancer>{props.title}</Balancer>

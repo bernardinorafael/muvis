@@ -39,6 +39,10 @@ module.exports = {
 
         'shown-header': 'shown-header 400ms ease-in-out',
       },
+
+      width: {
+        'select-width': 'var(--radix-select-trigger-width)',
+      },
     },
 
     screens: {

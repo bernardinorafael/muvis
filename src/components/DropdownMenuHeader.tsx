@@ -30,9 +30,7 @@ export function DropdownMenuHeader(props: DropdownMenuHeaderProps) {
   const category = useQuery(
     ['movie-categories'],
     async (): Promise<Category[]> => {
-      const response = await api.get('/genre/movie/list', {
-        params: { language: 'pt-BR' },
-      })
+      const response = await api.get('/genre/movie/list')
       return response.data.genres
     },
     { cacheTime: Infinity },
@@ -60,7 +58,6 @@ export function DropdownMenuHeader(props: DropdownMenuHeaderProps) {
                 className={cn(
                   'w-64 cursor-pointer rounded p-2 pl-5 font-medium text-zinc-300',
                   'data-[highlighted]:underline',
-                  'active:scale-[0.97]',
                   'focus:outline-none',
                 )}
                 key={movie.id}

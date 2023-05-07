@@ -77,9 +77,12 @@ export default function Home(props: HomeProps) {
         <HeaderCarouselMovies description="Em cartaz no cinema" />
 
         <CarouselCardMovies>
-          {props.nowPlayingMovies.map((movie, i) => {
+          {props.nowPlayingMovies.map((movie) => {
             return (
-              <div className={cn('grid h-full grid-cols-1', 'keen-slider__slide')}>
+              <div
+                className={cn('grid h-full grid-cols-1', 'keen-slider__slide')}
+                key={movie.id}
+              >
                 <SheetMoviePreview movieId={movie.id}>
                   <MovieCard
                     key={movie.id}
@@ -98,7 +101,10 @@ export default function Home(props: HomeProps) {
         <CarouselCardMovies>
           {props.horrorMovies.map((movie) => {
             return (
-              <div className={cn('grid h-full grid-cols-1', 'keen-slider__slide')}>
+              <div
+                className={cn('grid h-full grid-cols-1', 'keen-slider__slide')}
+                key={movie.id}
+              >
                 <SheetMoviePreview movieId={movie.id}>
                   <MovieCard
                     key={movie.id}
@@ -117,7 +123,10 @@ export default function Home(props: HomeProps) {
         <CarouselCardMovies>
           {props.crimeMovies.map((movie) => {
             return (
-              <div className={cn('grid h-full grid-cols-1', 'keen-slider__slide')}>
+              <div
+                className={cn('grid h-full grid-cols-1', 'keen-slider__slide')}
+                key={movie.id}
+              >
                 <SheetMoviePreview movieId={movie.id}>
                   <MovieCard
                     key={movie.id}
@@ -136,7 +145,10 @@ export default function Home(props: HomeProps) {
         <CarouselCardMovies>
           {props.animationMovies.map((movie) => {
             return (
-              <div className={cn('grid h-full grid-cols-1', 'keen-slider__slide')}>
+              <div
+                className={cn('grid h-full grid-cols-1', 'keen-slider__slide')}
+                key={movie.id}
+              >
                 <SheetMoviePreview movieId={movie.id}>
                   <MovieCard
                     key={movie.id}
